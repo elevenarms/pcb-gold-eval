@@ -38,6 +38,8 @@ for src, dst, kick, title in ((f"{R}/report/Rauchwerk-Research_PCB-Gold-Master-E
     if os.path.exists(src):
         shutil.copy(src, f"{S}/assets/docs/{dst}")
         docs.append(f'<a class="doc" href="assets/docs/{dst}"><span class="kicker">{kick}</span><h3>{title}</h3><p>PDF ↓</p></a>')
+docs.append('<a class="doc" href="https://github.com/elevenarms/pcb-gold-eval"><span class="kicker">Source · Apache-2.0</span>'
+            '<h3>Harbor tasks, verifier, baselines, forecast and every build script</h3><p>GitHub →</p></a>')
 html = open(f"{S}/index.html").read()
 for key, val in (("RESULTS", results), ("FORECAST", forecast), ("DOCS", "".join(docs))):
     html = re.sub(rf"<!--{key}-->.*?<!--/{key}-->", f"<!--{key}-->{val}<!--/{key}-->", html, flags=re.S)
