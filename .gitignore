@@ -16,3 +16,4 @@ video/vo/*.mp3
 .DS_Store
 data/*.log
 paper/*.toc
+.vercel
