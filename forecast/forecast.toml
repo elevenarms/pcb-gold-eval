@@ -1,0 +1,107 @@
+# Outcome forecast: gold-relative eval reward G (0..1) as a function of compute budget B ($) and wall clock T (h),
+# for a MEDIUM-tier board (Orin-class: 8 layers, ~680 footprints, ~1,600 connections).
+#
+#   N(B,T) = min( (B - fixed_usd)/usd_per_eval , (T - fixed_h) * parallel / h_per_eval )      effective evaluations
+#   G(N)   = g0 + (gmax - g0) * (1 - (1 + N/n0)^-alpha)                                       saturating return
+#
+# alpha = 0.6 with n0 = 60 reproduces WireMask-EA's "73% of the gain in the first 300 of 2,000 evaluations"
+# (Shi et al., NeurIPS 2023). Every value carries a source tag: [measured] [lit:<ref>] [price] [assumption].
+# Edit and re-run `make forecast`.
+
+[prices]                       # [price] fetched 2026-11-07
+cpu_core_h = 0.047             # Modal CPU per physical core-hour (AWS c7g spot ~0.016)
+gpu_h = 2.50                   # Modal A100-80 (RunPod community 1.19-1.39; H100 1.99-3.95)
+llm_usd_per_candidate = 2.2    # [lit:HELIX ICCAD'26] ~$1.9-2.5 per LLM-evolved candidate (Claude Opus 4.6)
+
+[eval]
+parallel_cores = 256           # [assumption] one Modal app / small fleet
+
+# Per-tier evaluation cost. route_core_h: route + score one candidate. em_core_h: full-wave openEMS/gerber2ems check of
+# every controlled-impedance structure on the board (~2 core-min per structure on CPU: extrapolated from openEMS's
+# published 118 MC/s; no published PCB via/pair runtime exists). surrogate_*: training data + GPU fit.
+[tier.medium]
+label = "Medium tier (Orin-class: 8 layers, 680 parts, 104 pairs)"
+route_core_h = 0.25            # [measured: Freerouting baselines, see data/baselines]
+em_core_h = 3.5                # [assumption] ~104 pair structures x 2 core-min
+surrogate_usd = 30
+surrogate_h = 3
+
+[tier.hard]
+label = "Hard tier (DDR5 RDIMM-class: 12 layers, 800 parts)"
+route_core_h = 2.0             # [assumption] scaled from medium by connection count and layer count
+em_core_h = 30.0               # [assumption] ~450 DQ/DQS/CA structures x 4 core-min (finer mesh)
+surrogate_usd = 300
+surrogate_h = 12
+
+[strategy.multistart]
+label = "Multi-start router"
+desc = "Freerouting / KiCadRoutingTools with many seeds; keep the best"
+g0 = 0.20                      # [measured] single Freerouting run, see data/baselines
+gmax = 0.30                    # [assumption] seeds fix completion, not skew/width/length
+n0 = 4
+alpha = 0.5
+evidence = "measured"
+
+[strategy.evolved]
+label = "Evolved routing recipe"
+desc = "CMA-ES / NSGA-II over net order, router costs and per-class rules, fitness = this eval's proxy terms"
+g0 = 0.20
+gmax = 0.60                    # [assumption] proxy-optimised; ChiPBench / Kahng: proxy wins transfer only partly
+n0 = 60                        # [lit:WireMask-BBO] calibrated diminishing returns
+alpha = 0.6
+evidence = "literature"
+
+[strategy.si_tools]
+label = "+ deterministic SI tooling"
+desc = "evolved recipe + length/skew tuning and impedance-width enforcement (KiCadRoutingTools)"
+g0 = 0.20
+gmax = 0.75                    # [assumption] tooling targets the pair-skew, length and width terms directly
+n0 = 60
+alpha = 0.6
+evidence = "assumption"
+
+[strategy.surrogate]
+label = "+ EM-trained SI surrogate"
+desc = "openEMS/gerber2ems samples train a surrogate that screens candidates; top-k verified full-wave"
+g0 = 0.20
+gmax = 0.85
+n0 = 80
+alpha = 0.6
+surrogate_fixed = true         # [lit:Withoft 2026] 10k-100k samples for <10% NRMSE; cost per tier above
+em_frac = 0.05                 # full-wave verify the top 5% of candidates
+evidence = "assumption"
+
+[strategy.llm_evolve]
+label = "LLM-evolved router heuristics"
+desc = "OpenEvolve / ShinkaEvolve rewrite router cost functions; scored on the eval suite"
+g0 = 0.20
+gmax = 0.70
+n0 = 40                        # [lit:HELIX] ~120 candidates per run; [lit:Yao 2025] gain ~ log(candidates)
+alpha = 0.5
+usd_per_eval_extra = 2.2       # LLM tokens per candidate, on top of evaluation compute
+h_per_eval_override = 0.13     # [lit:HELIX] ~8 min build + benchmark per candidate
+parallel_override = 8          # [lit:HELIX] lambda = 8 offspring per generation
+evidence = "literature"
+
+[strategy.rl]
+label = "Learned routing policy (RL)"
+desc = "GNN + PPO policy trained across boards (PCBWorld-style)"
+g0 = 0.20
+gmax = 0.55                    # [lit:PCBWorld 2026] PPO 0.45 vs Freerouting 0.78 clean-pass on harder real boards
+n0 = 200
+alpha = 0.6
+fixed_usd = 3000               # [lit:Cheng/Kahng ISPD'23] RL ~19k CPU-h vs SA ~0.9k for equal-or-worse; + GPU training
+fixed_h = 72
+evidence = "unproven"
+
+[strategy.agent]
+label = "Coding agent + open tools"
+desc = "LLM coding agent driving KiCad, Freerouting and KiCadRoutingTools (as in the Zine Machine v3 build)"
+g0 = 0.20
+gmax = 0.55                    # [assumption] completes boards; SI terms only as good as its tool use
+n0 = 3
+alpha = 0.7
+usd_per_eval_extra = 25        # [assumption] tokens per multi-hour agent attempt
+h_per_eval_override = 5.0      # [measured: Zine Machine v3, 499 -> 0 unconnected in 4.9 h, one run]
+parallel_override = 4
+evidence = "measured"

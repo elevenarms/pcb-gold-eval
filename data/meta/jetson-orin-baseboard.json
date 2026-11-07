@@ -1,0 +1,25 @@
+{
+ "gold_drc": {
+  "unconnected": 0,
+  "errors": {
+   "hole_clearance": 4,
+   "zones_intersect": 1,
+   "courtyards_overlap": 1
+  }
+ },
+ "stripped_unconnected": 1625,
+ "stripped_errors": {
+  "hole_clearance": 4,
+  "zones_intersect": 1,
+  "courtyards_overlap": 1
+ },
+ "stats": {
+  "copper_layers": 8,
+  "footprints": 680,
+  "nets": 799,
+  "pair_nets": 208,
+  "via_total": 1345,
+  "length_total_mm": 19571.7
+ },
+ "seconds": 53.4
+}

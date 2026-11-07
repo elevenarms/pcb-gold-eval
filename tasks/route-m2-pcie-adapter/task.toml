@@ -1,0 +1,24 @@
+schema_version = "1.4"
+artifacts = ["/app/board.kicad_pcb"]
+
+[task]
+name = "pcb-gold-eval/route-m2-pcie-adapter"
+authors = [{ name = "Dave Rauchwerk", email = "dbrauchwerk@gmail.com" }]
+
+[metadata]
+category = "hardware-design"
+difficulty = "easy"
+difficulty_explanation = "4-layer board, 20 footprints, 18 diff-pair nets; gold master: antmicro/m2-pcie-adapter@11844f1 (unknown)"
+tags = ["pcb", "routing", "signal-integrity", "kicad", "antmicro"]
+
+[verifier]
+environment_mode = "separate"
+timeout_sec = 900
+
+[agent]
+timeout_sec = 3600
+
+[environment]
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480

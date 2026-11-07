@@ -1,0 +1,23 @@
+{
+ "gold_drc": {
+  "unconnected": 0,
+  "errors": {
+   "zones_intersect": 1,
+   "starved_thermal": 1
+  }
+ },
+ "stripped_unconnected": 304,
+ "stripped_errors": {
+  "zones_intersect": 1,
+  "starved_thermal": 6
+ },
+ "stats": {
+  "copper_layers": 4,
+  "footprints": 121,
+  "nets": 145,
+  "pair_nets": 36,
+  "via_total": 312,
+  "length_total_mm": 1545.0
+ },
+ "seconds": 22.5
+}

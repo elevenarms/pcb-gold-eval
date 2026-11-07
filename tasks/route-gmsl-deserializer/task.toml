@@ -1,0 +1,24 @@
+schema_version = "1.4"
+artifacts = ["/app/board.kicad_pcb"]
+
+[task]
+name = "pcb-gold-eval/route-gmsl-deserializer"
+authors = [{ name = "Dave Rauchwerk", email = "dbrauchwerk@gmail.com" }]
+
+[metadata]
+category = "hardware-design"
+difficulty = "medium"
+difficulty_explanation = "4-layer board, 236 footprints, 28 diff-pair nets; gold master: antmicro/gmsl-deserializer@43d9aad (photo)"
+tags = ["pcb", "routing", "signal-integrity", "kicad", "antmicro"]
+
+[verifier]
+environment_mode = "separate"
+timeout_sec = 1800
+
+[agent]
+timeout_sec = 7200
+
+[environment]
+cpus = 8
+memory_mb = 16384
+storage_mb = 20480

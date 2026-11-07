@@ -1,0 +1,21 @@
+{
+ "gold_drc": {
+  "unconnected": 0,
+  "errors": {
+   "zones_intersect": 2
+  }
+ },
+ "stripped_unconnected": 2021,
+ "stripped_errors": {
+  "zones_intersect": 2
+ },
+ "stats": {
+  "copper_layers": 12,
+  "footprints": 691,
+  "nets": 919,
+  "pair_nets": 226,
+  "via_total": 2483,
+  "length_total_mm": 25859.3
+ },
+ "seconds": 100.1
+}

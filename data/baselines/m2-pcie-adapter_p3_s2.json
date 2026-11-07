@@ -1,0 +1,1 @@
+{"board": "m2-pcie-adapter", "passes": 3, "seed": 2, "router_seconds": 115.3, "freerouting_unrouted": [14], "reward": 0.2092, "placement_intact": 1.0, "completion": 0.8387, "drc": 0.1818, "pair_skew": 0.1111, "length_groups": 0.0, "impedance_width": 0.4339, "efficiency": 1.0, "gold_copy_fraction": 0.012}

@@ -1,0 +1,8 @@
+PCB Gold-Master Eval
+Copyright 2026 Dave Rauchwerk
+
+This project scores routing against open-hardware board designs by Antmicro Ltd
+(https://github.com/antmicro), licensed under the Apache License 2.0. The board files are
+not included in this repository; they are downloaded at pinned commits listed in boards.toml.
+3D models in site/assets/glb/ are derived from those designs (KiCad export) and remain
+subject to the Apache License 2.0.

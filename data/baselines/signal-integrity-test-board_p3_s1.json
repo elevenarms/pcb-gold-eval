@@ -1,0 +1,1 @@
+{"board": "signal-integrity-test-board", "passes": 3, "seed": 1, "router_seconds": 74.1, "freerouting_unrouted": [17], "reward": 0.483, "placement_intact": 1.0, "completion": 0.8972, "drc": 1.0, "pair_skew": 0.0, "length_groups": 1.0, "impedance_width": 0.0, "efficiency": 1.0}

@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Rauchwerk Research · PCB Gold-Master Eval</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="rr.css"><style>
+.mono { filter: url(#levels); }
+figure.f { margin: 0; } figure.f img { width: 100%; display: block; border: 1pt solid var(--ink); background: #fff; }
+figure.f figcaption { font: 500 6.8pt/1.3 var(--mono); color: var(--mid); margin-top: 3pt; text-transform: none; }
+.dark figure.f img { border-color: #fff; }
+.cap { font: 500 6.9pt/1.35 var(--mono); color: var(--mid); margin: 4pt 0 0; }
+.exk { font: 500 7.2pt var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--grey); border-top: 1.5pt solid var(--ink); padding-top: 4pt; margin: 6pt 0 6pt; }
+.exk span { color: var(--ink); margin-right: 8pt; }
+.side { background: #fff; border-top: 1.5pt solid var(--ink); padding: 7pt 9pt 6pt; font-size: 8.3pt; margin-bottom: 8pt; }
+.side h3 { font-size: 10pt; margin: 2pt 0 3pt; } .side p { margin: 0; }
+.pq { margin: 10pt 0 0; font: 700 12.5pt/1.25 var(--sans); letter-spacing: -.2pt; border-left: 3pt solid var(--ink); padding: 2pt 0 2pt 10pt; }
+.pq cite { display: block; font: 500 7pt var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--grey); margin-top: 5pt; font-style: normal; }
+.strip4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5pt; }
+.strip4 figcaption { font-size: 6pt !important; }
+.grid3.tight, .grid2.tight { gap: 5pt; }
+.sim figure img { height: 1.2in; object-fit: cover; }
+.row.r2 { grid-template-columns: 22pt 1fr; padding: 5pt 0; gap: 8pt; } .row.r2 p { font-size: 8.6pt; margin-top: 2pt; } .row.r2 .n { font-size: 15pt; } .row.r2 h3 { font-size: 10.5pt; margin-bottom: 1pt; }
+.row p.nx::before { content: "Fix  "; font: 500 7pt var(--mono); letter-spacing: .06em; color: var(--grey); }
+.row h3 .tag { margin-left: 6pt; vertical-align: 1pt; }
+table.sm { font-size: 7.9pt; } table.sm td { padding: 3.5pt 4pt; } table.sm th { padding: 3pt 4pt; }
+table.sm td:first-child { white-space: nowrap; }
+ol.recs li { padding: 4.5pt 0; } ol.recs span { font-size: 8.5pt; }
+.card { font-size: 8.4pt; }
+.arch { display: grid; grid-template-columns: 1fr 10pt 1fr 10pt 1fr 10pt 1fr 10pt 1fr; align-items: center; gap: 3pt; }
+.arch .col { display: flex; flex-direction: column; gap: 5pt; } .arch .kicker { font-size: 6.4pt; }
+.arch .bx { border: 1pt solid var(--ink); background: #fff; padding: 5pt 6pt; font: 700 8pt/1.2 var(--sans); min-height: 0.52in; }
+.arch .bx.dk { background: var(--ink); color: #fff; } .arch .bx small { display: block; font: 500 6.4pt/1.3 var(--mono); color: var(--mid); margin-top: 2pt; }
+.arch .bx.dk small { color: #b5b5b2; } .arch .arr { font: 800 13pt var(--sans); text-align: center; }
+.ladder { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6pt; align-items: end; margin-bottom: 4pt; }
+.lv { padding: 6pt 7pt; display: flex; flex-direction: column; justify-content: flex-end; font-size: 7.4pt; line-height: 1.25; }
+.lv b { font: 800 15pt var(--sans); } .lv span { font-weight: 700; font-size: 9pt; margin: 1pt 0 2pt; }
+.lv.done { background: var(--ink); color: #fff; } .lv.done small { color: #c9c9c7; }
+.lv.part { background: #fff; border: 1.2pt solid var(--ink); } .lv.todo { border: 1.2pt dashed var(--grey); color: var(--mid); }
+.methods { background: #fff; border-top: 1.5pt solid var(--ink); padding: 7pt 9pt; margin-top: 10pt; font-size: 7.7pt; line-height: 1.38; }
+.methods p { margin: 3pt 0 0; }
+.thanks { border-top: 1.2pt solid #fff; padding-top: 5pt; font: 500 7.6pt/1.6 var(--mono); }
+.thanks .kicker { display: block; color: #9a9a98; }
+</style><style>
+figure.fd img { background: #000; border-color: #0a0a0a; }
+.steps4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt; font-size: 7.9pt; line-height: 1.35; }
+.steps4 > div { border-top: 1.5pt solid var(--ink); padding-top: 4pt; } .steps4 b { display: block; font-size: 9pt; margin-bottom: 2pt; }
+table.score td.c, table.res td.c, table.fc td.c, table.sm td.c { text-align: center; }
+table.sm td:first-child { white-space: normal; }
+.five { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7pt; font-size: 7.4pt; line-height: 1.3; color: var(--mid); }
+.five > div { border-top: 1.5pt solid var(--ink); padding-top: 4pt; } .five b { display: block; font: 800 15pt var(--sans); color: var(--ink); letter-spacing: -.3pt; margin-bottom: 2pt; }
+.note { background: #fff; border-top: 1.5pt solid var(--ink); padding: 6pt 9pt; font-size: 8pt; line-height: 1.38; }
+code { font: 500 7.4pt var(--mono); }
+</style></head><body><section class="page dark">
+<img src="assets/rauchwerk-white.png" style="position:absolute;left:.6in;top:.6in;height:1.15in">
+<div style="position:absolute;right:.6in;top:.62in;text-align:right" class="kicker">Field report · November 2026<br>Literature review · Eval · Forecast</div>
+<img src="m/orin-exploded.png" style="position:absolute;left:0;right:0;top:1.9in;width:8.5in;height:4.6in;object-fit:cover;object-position:center 52%">
+<div class="cover-text" style="bottom:1.45in">
+  <span class="kicker">PCB Gold-Master Eval</span>
+  <h1 style="font-size:40pt">Routed is not the same as right</h1>
+  <p class="lead" style="color:#d6d6d2;max-width:6.9in">Self-improving machine learning for high-frequency PCB placement and routing: what the literature proves, which open-source tools can carry it, a new eval that scores machine routing against eight fabricated Antmicro boards, and what an outcome costs in dollars and hours.</p>
+  <span class="kicker" style="color:#a4a4a2">Dave Rauchwerk · Rauchwerk Research</span>
+</div>
+<div class="cover-chaps"><div><b>1</b>The evidence</div><div><b>2</b>The tools</div><div><b>3</b>The eval</div><div><b>4</b>The forecast</div></div>
+</section><section class="page">
+<div class="topline"><span>00 · At a glance</span><span>Field Report · PCB Gold-Master Eval</span></div>
+<div class="foot"><span class="bug"><img src="assets/mark-black.png">Rauchwerk Research</span><span>Dave Rauchwerk · November 2026</span><span>02 / 10</span></div>
+<div class="body">
+<div class="kicker">At a glance · The answer, in one line</div>
+<h2>Machines can connect a board. Nothing open yet routes it the way its engineers did, and the eval to prove it did not exist.</h2>
+<p class="lead">The literature has no learned PCB method that optimises impedance, skew or length matching; only vendors claim it. So the work started with the measuring stick: a Harbor eval that strips the copper from eight fabricated, Apache-licensed Antmicro boards and scores machine routing against the human original.</p>
+<div class="tiles">
+ <div class="tile"><b>8</b><span>gold-master boards, 4–12 copper layers, 20–797 parts, pinned by commit and sha256</span></div>
+ <div class="tile"><b>0.27</b><span>Freerouting on the M.2 PCIe adapter: 96% routed, 1 of 9 pairs in skew tolerance</span></div>
+ <div class="tile"><b>1.00</b><span>oracle score: the human copper scores itself perfectly through Harbor</span></div>
+ <div class="tile"><b>21×</b><span>CPU-hours RL used over simulated annealing in the only independent chip-placement rerun, for equal or worse results</span></div>
+ <div class="tile"><b>$250</b><span>to $300 per LLM-evolved placer run (HELIX, ICCAD 2026) for a 4.5–5.6% wirelength gain</span></div>
+ <div class="tile"><b>0</b><span>open PCB benchmarks with a signal-integrity metric before this one</span></div>
+</div>
+<h3 style="margin-top:4pt">Five findings</h3>
+<ol class="recs">
+ <li><div><b>Search beats reinforcement learning per dollar, so far.</b><span>Evolutionary and tree search won at hour scale in chip placement; RL’s headline result has no independent reproduction.</span></div></li>
+ <li><div><b>Completion hides the high-frequency failure.</b><span>The open router finishes 72–96% of simpler boards, stalls at 18% on a BGA board, and misses the skew, length and width targets everywhere.</span></div></li>
+ <li><div><b>The evaluator is the bottleneck, not the optimiser.</b><span>Proxy metrics barely predict final quality (Kendall τ 0.05–0.40); full-wave checks cost minutes per structure.</span></div></li>
+ <li><div><b>Compute is cheap; wall clock and fidelity are not.</b><span>A medium board’s routing candidate costs about one cent on CPU. Budgets matter only for RL, LLM evolution and full-wave EM on DDR-class boards.</span></div></li>
+ <li><div><b>Gold masters turn opinion into a number.</b><span>Antmicro’s length and skew targets exist only in their copper; the eval extracts them and makes every claim testable.</span></div></li>
+</ol></div></section><section class="page">
+<div class="topline"><span>Context · The question</span><span>Field Report · PCB Gold-Master Eval</span></div>
+<div class="foot"><span class="bug"><img src="assets/mark-black.png">Rauchwerk Research</span><span>Dave Rauchwerk · November 2026</span><span>03 / 10</span></div>
+<div class="body">
+<div class="kicker">The question</div>
+<h2>Can self-improving machine learning route a high-frequency board as well as the engineers who shipped it?</h2>
+<p class="lead">The claim under review: reinforcement learning, evolutionary algorithms and deep networks that learn to place and route boards for high-frequency constraints, without hand-coded heuristics. Testing it needs three things the field lacks: graded evidence, an open tool stack, and a benchmark with physics in the score.</p>
+<div class="exk"><span>Exhibit 1</span>The starting point: Zine Machine v3, routed by an agent with open tools</div>
+<img src="m/v3curve.png" style="width:100%;display:block;border-bottom:1pt solid var(--rule);padding-bottom:3pt">
+<p class="cap">Best-so-far unconnected items on the v3 main board, 6 Nov 2026, from the Backplane transcripts. Ninety-two per cent of connections were made in 22 minutes; the last one took 2.5 hours. The 499 ceiling is an artefact: <code>kicad-cli</code>’s DRC report stops listing unconnected items at 499, a cap found while building this eval.</p>
+<div class="grid3" style="margin-top:10pt;align-items:start">
+<div class="side"><span class="kicker">Why a new base case</span><h3>The project board is a weak test</h3><p>v3’s fastest interface is USB 2.0 and its parallel display bus runs near 30 MHz. It has no DDR, no PCIe and one routed history. A credible test needs boards with real high-speed interfaces, routed by professionals, built and used.</p></div>
+<div class="side"><span class="kicker">Scope</span><h3>Open source only</h3><p>Every tool, solver and dataset here is open source and runs headless in a pinned container. Commercial routers (Quilter, DeepPCB, Allegro X AI) appear only as context, graded as vendor claims.</p></div>
+<div class="side"><span class="kicker">Method</span><h3>Four parallel workstreams</h3><p>A graded literature review (30 sources), an inventory of 40 open tools with live repo data, an eval built and validated in Harbor, and a compute forecast with every parameter tagged by source.</p></div>
+</div></div></div></section><section class="page">
+<div class="topline"><span>01 · The evidence</span><span>Field Report · PCB Gold-Master Eval</span></div>
+<div class="foot"><span class="bug"><img src="assets/mark-black.png">Rauchwerk Research</span><span>Dave Rauchwerk · November 2026</span><span>04 / 10</span></div>
+<div class="body">
+<div class="chead"><svg viewBox="0 0 410 410"><rect width="410" height="410" fill="#0a0a0a"/><rect x="30" y="32" width="106" height="96" fill="#fff"/><text x="83.0" y="102.0" text-anchor="middle" font-family="Helvetica Neue,Inter,Arial" font-weight="800" font-size="62" fill="#000">1</text><rect x="30" y="155" width="106" height="100" fill="#3a3a3a"/><rect x="30" y="285" width="106" height="100" fill="#3a3a3a"/><rect x="272" y="32" width="106" height="96" fill="#3a3a3a"/></svg><div><div class="kicker">Chapter 1 of 4 · What the literature proves</div><h2>The evidence favours search, surrogates and honest evaluators over end-to-end RL</h2></div></div>
+<div class="exk"><span>Exhibit 2</span>Thirty sources graded; the eleven that decide the question</div>
+<table class="sm"><tr><th>Line of work</th><th>Venue</th><th>Grade</th><th>Decisive number</th></tr>
+<tr><td>Chip RL placement (Google CT / AlphaChip)</td><td>Nature 2021, 2024</td><td>B, disputed</td><td>Rerun: 19,068 CPU-h vs 896 for SA; SA best proxy in 6 of 9; no published successful reproduction</td></tr><tr><td>Independent reassessment (Cheng, Kahng et al.)</td><td>ISPD 2023, TCAD</td><td>B</td><td>Proxy cost vs routed WL Kendall τ 0.40; vs WNS 0.05</td></tr><tr><td>WireMask-BBO (evolutionary)</td><td>NeurIPS 2023</td><td>A−</td><td>73% of gain in first 300 of 2,000 evals; CPU only</td></tr><tr><td>EfficientPlace (tree search + RL)</td><td>ICML 2024</td><td>B</td><td>0.5k→1k steps doubles time for 0.3–6.6% more</td></tr><tr><td>DREAMPlace (GPU analytical)</td><td>DAC 2019</td><td>A</td><td>>30× faster than RePlAce at equal quality</td></tr><tr><td>RL PCB placement (Vassallo, Bajada)</td><td>DATE 2024</td><td>B</td><td>−17 to −21% routed WL vs SA; compute not reported</td></tr><tr><td>PCBWorld (RL routing, 679 boards)</td><td>KDD wkshp 2026</td><td>C</td><td>PPO 0.45 vs Freerouting 0.78 clean-pass on harder boards; no SI metric</td></tr><tr><td>FunSearch (LLM program search)</td><td>Nature 2024</td><td>B</td><td>~10⁶ samples; 4 of 140 runs hit the best result</td></tr><tr><td>HELIX (LLM-evolved placer)</td><td>ICCAD 2026</td><td>B</td><td>$250–300, ~120 candidates per run; −4.5% HPWL, −5.6% routed WL</td></tr><tr><td>SI surrogates (eye, PDN, EM)</td><td>preprints 2021–26</td><td>C</td><td>R² >0.99; 10³–10⁵× faster; NRMSE 10.2→6.6% from 10k→100k samples</td></tr><tr><td>Quilter, DeepPCB</td><td>vendor</td><td>D</td><td>Claims of DDR/diff-pair handling; no peer-reviewed results</td></tr></table>
+<p class="cap">Grades: A peer-reviewed and independently reproduced · B peer-reviewed · C preprint or non-archival · D vendor claim. Every citation was checked against arXiv, a DOI or the publisher; full bibliography in the companion paper.</p>
+<div class="grid2" style="margin-top:6pt;gap:10pt">
+ <div class="card"><h3>Proven</h3>GPU analytical placement is fast and good. Evolutionary and tree search beat pure RL at hour scale. LLM-evolved heuristics give single-digit gains at a known price. Surrogates reproduce SI metrics in narrow parameter spaces.</div>
+ <div class="card"><h3>Not proven, and the gap</h3>“Superhuman” RL placement; any learned PCB router that beats rule-based routers on real boards; any method that optimises high-frequency SI end to end. No PCB benchmark scores signal integrity, so none of it can yet be shown.</div>
+</div>
+<div class="exk" style="margin-top:8pt"><span>Five numbers</span>that carry the forecast in Chapter 4</div>
+<div class="five">
+ <div><b>21×</b>more CPU-hours for RL than simulated annealing, for equal or worse placements</div>
+ <div><b>73%</b>of WireMask-EA’s gain inside its first 300 of 2,000 evaluations</div>
+ <div><b>0.4 vs 2.8%</b>best-of-120 single shots vs an evolutionary loop, same budget (HELIX)</div>
+ <div><b>τ 0.05</b>rank correlation between proxy cost and timing slack: proxies mislead</div>
+ <div><b>10³–10⁵×</b>surrogate speedup over SI simulation once trained on 10k–100k samples</div>
+</div>
+</div></div></section><section class="page">
+<div class="topline"><span>02 · The tools</span><span>Field Report · PCB Gold-Master Eval</span></div>
+<div class="foot"><span class="bug"><img src="assets/mark-black.png">Rauchwerk Research</span><span>Dave Rauchwerk · November 2026</span><span>05 / 10</span></div>
+<div class="body">
+<div class="chead"><svg viewBox="0 0 410 410"><rect width="410" height="410" fill="#0a0a0a"/><rect x="30" y="32" width="106" height="96" fill="#3a3a3a"/><rect x="30" y="155" width="106" height="100" fill="#fff"/><text x="83.0" y="227.0" text-anchor="middle" font-family="Helvetica Neue,Inter,Arial" font-weight="800" font-size="62" fill="#000">2</text><rect x="30" y="285" width="106" height="100" fill="#3a3a3a"/><rect x="272" y="32" width="106" height="96" fill="#3a3a3a"/></svg><div><div class="kicker">Chapter 2 of 4 · The open-source stack, scored</div><h2>The open stack is complete except for one piece: fast physics</h2></div></div>
+<div class="exk"><span>Exhibit 3</span>Open-source tools scored 1–5 on performance, GPU acceleration, scriptability and PCB integration (repo data 7 Nov 2026)</div>
+<table class="sm score"><tr><th>Layer</th><th>Tool</th><th>Licence</th><th>Perf</th><th>GPU</th><th>Script</th><th>PCB</th><th>Note</th></tr>
+<tr><td>Routing</td><td><b>KiCadRoutingTools</b></td><td>MIT</td><td class=c>4</td><td class=c>1</td><td class=c>5</td><td class=c>5</td><td>Rust A*; diff pairs, length/time matching; 0.65 s small boards</td></tr><tr><td>Routing</td><td><b>Freerouting 2.5</b></td><td>GPL-3</td><td class=c>3</td><td class=c>1</td><td class=c>4</td><td class=c>5</td><td>Reference autorouter; single-threaded router; varies by run</td></tr><tr><td>Routing</td><td><b>KiCad 10 IPC API / kicad-cli</b></td><td>GPL-3</td><td class=c>3</td><td class=c>1</td><td class=c>3</td><td class=c>5</td><td>DRC, export; headless API arrives in KiCad 11</td></tr><tr><td>Placement</td><td><b>DREAMPlace</b></td><td>BSD-3</td><td class=c>5</td><td class=c>5</td><td class=c>3</td><td class=c>1</td><td>GPU analytical placer; needs a PCB adapter</td></tr><tr><td>EM / SI</td><td><b>openEMS + gerber2ems</b></td><td>GPL / Apache</td><td class=c>3</td><td class=c>3</td><td class=c>4</td><td class=c>5</td><td>Gerbers to S-parameters; GPU engine unreleased</td></tr><tr><td>EM / SI</td><td><b>Palace (AWS)</b></td><td>Apache-2</td><td class=c>5</td><td class=c>4</td><td class=c>2</td><td class=c>1</td><td>FEM, multi-GPU; needs a gmsh pipeline</td></tr><tr><td>EM / SI</td><td><b>gprMax / FDTDX</b></td><td>GPL / MIT</td><td class=c>5</td><td class=c>5</td><td class=c>4</td><td class=c>1</td><td>Fast GPU FDTD; no PCB ports or import</td></tr><tr><td>EM / SI</td><td><b>scikit-rf, PyBERT</b></td><td>BSD-3</td><td class=c>4</td><td class=c>1</td><td class=c>5</td><td class=c>2</td><td>S-parameter cascade; eye and BER</td></tr><tr><td>Optimiser</td><td><b>evosax / EvoTorch</b></td><td>Apache-2</td><td class=c>5</td><td class=c>5</td><td class=c>5</td><td class=c>1</td><td>Batched CMA-ES and NES on GPU</td></tr><tr><td>Optimiser</td><td><b>pymoo, Optuna, BoTorch</b></td><td>Apache / MIT</td><td class=c>4</td><td class=c>1–4</td><td class=c>5</td><td class=c>1</td><td>Multi-objective and multi-fidelity search</td></tr><tr><td>Learning</td><td><b>PufferLib, SB3, PyG</b></td><td>MIT</td><td class=c>4</td><td class=c>4</td><td class=c>5</td><td class=c>1</td><td>PPO and graph encoders</td></tr><tr><td>Self-improving</td><td><b>OpenEvolve, ShinkaEvolve</b></td><td>Apache-2</td><td class=c>3</td><td class=c>–</td><td class=c>4</td><td class=c>1</td><td>LLM rewrites router cost functions</td></tr></table>
+<p class="cap">Scores from primary sources (READMEs, papers, release notes). GPL tools are called as separate processes so the rest of the stack stays permissive. 28 further tools were reviewed and left out: inactive, chip-only or no PCB path.</p>
+<div class="grid3" style="margin-top:8pt">
+ <div class="card"><h3>Fast loop</h3>KiCadRoutingTools as the inner router, Freerouting as the reference, analytic impedance tables and skew/length checks as the cheap score. Many single-threaded processes, not one big machine.</div>
+ <div class="card"><h3>Physics</h3>openEMS through gerber2ems is the only open path from a PCB to S-parameters. Its GPU engine landed on master in October 2026 with no published speedups: benchmark it before budgeting GPUs.</div>
+ <div class="card"><h3>Self-improvement</h3>evosax or pymoo for routing recipes; OpenEvolve for router code; BoTorch to decide when a candidate earns a full-wave check. RL last, if at all.</div>
+</div></div></section><section class="page">
+<div class="topline"><span>03 · The eval</span><span>Field Report · PCB Gold-Master Eval</span></div>
+<div class="foot"><span class="bug"><img src="assets/mark-black.png">Rauchwerk Research</span><span>Dave Rauchwerk · November 2026</span><span>06 / 10</span></div>
+<div class="body">
+<div class="chead"><svg viewBox="0 0 410 410"><rect width="410" height="410" fill="#0a0a0a"/><rect x="30" y="32" width="106" height="96" fill="#3a3a3a"/><rect x="30" y="155" width="106" height="100" fill="#3a3a3a"/><rect x="30" y="285" width="106" height="100" fill="#fff"/><text x="83.0" y="357.0" text-anchor="middle" font-family="Helvetica Neue,Inter,Arial" font-weight="800" font-size="62" fill="#000">3</text><rect x="272" y="32" width="106" height="96" fill="#3a3a3a"/></svg><div><div class="kicker">Chapter 3 of 4 · A benchmark with physics in the score</div><h2>Eight boards that were built and used become the answer key</h2></div></div>
+<div class="grid2" style="align-items:start">
+<div><div class="exk"><span>Exhibit 4</span>The gold-master set: Antmicro open hardware, Apache-2.0</div>
+<table class="sm"><tr><th>Board</th><th>Tier</th><th>Cu</th><th>Parts</th><th>Pair nets</th><th>To route</th><th>High speed</th><th>Built</th></tr><tr><td>SI test board</td><td>easy</td><td class=c>4</td><td class=c>28</td><td class=c>2</td><td class=c>107</td><td>50 Ω test lines</td><td>VNA data shipped</td></tr><tr><td>M.2 PCIe adapter</td><td>easy</td><td class=c>4</td><td class=c>20</td><td class=c>18</td><td class=c>93</td><td>PCIe x4</td><td>not documented</td></tr><tr><td>HDMI–MIPI bridge</td><td>easy</td><td class=c>4</td><td class=c>121</td><td class=c>36</td><td class=c>304</td><td>HDMI, CSI-2</td><td>photo in repo</td></tr><tr><td>GMSL deserializer</td><td>medium</td><td class=c>4</td><td class=c>236</td><td class=c>28</td><td class=c>413</td><td>GMSL2, CSI-2</td><td>photo in repo</td></tr><tr><td>Jetson Orin baseboard</td><td>medium</td><td class=c>8</td><td class=c>680</td><td class=c>208</td><td class=c>1,625</td><td>PCIe, USB 3, CSI-2, HDMI, GbE</td><td>sold (CircuitHub)</td></tr><tr><td>RDIMM DDR4 tester</td><td>hard</td><td class=c>12</td><td class=c>691</td><td class=c>226</td><td class=c>2,021</td><td>DDR4 RDIMM</td><td>Rowhammer research</td></tr><tr><td>SO-DIMM DDR5 tester</td><td>hard</td><td class=c>12</td><td class=c>706</td><td class=c>102</td><td class=c>1,770</td><td>DDR5 SO-DIMM</td><td>photo in repo</td></tr><tr><td>RDIMM DDR5 tester</td><td>hard</td><td class=c>12</td><td class=c>797</td><td class=c>178</td><td class=c>2,300</td><td>DDR5 RDIMM</td><td>VNA vs simulation</td></tr></table>
+<p class="cap">“To route”: connections left after the copper is stripped, from KiCad’s connectivity engine. Antmicro’s rule files set widths and gaps but contain no length or skew limits: those targets live only in the human copper, which is why the eval scores against the copper itself.</p></div>
+<div><figure class="f fd"><img src="m/ddr5-highspeed.png" style="height:1.9in;object-fit:cover;object-position:center"><figcaption>RDIMM DDR5 tester, data nets only: the length-matching meanders an engineer drew by hand are the answer key.</figcaption></figure>
+<div style="height:6pt"></div><figure class="f fd"><img src="m/hdmi-assembled.png" style="height:1.55in;object-fit:cover;object-position:center"><figcaption>HDMI–MIPI bridge, four layers, 121 parts: the easy tier.</figcaption></figure></div>
+</div>
+<div class="exk"><span>Exhibit 5</span>How a task runs (Harbor 0.25 format, one task per board)</div>
+<div class="steps4">
+ <div><b>1 · Strip</b>The image build fetches the gold board at a pinned commit, checks its sha256, removes tracks, vias, tuning patterns and fills, and deletes the original in the same layer.</div>
+ <div><b>2 · Route</b>The agent gets the stripped board, KiCad 10.0.7, Freerouting 2.5 and Java 25, and must save a routed board in place without moving a part.</div>
+ <div><b>3 · Verify</b>A separate verifier re-fetches the gold, refills zones and compares, net by net and layer by layer.</div>
+ <div><b>4 · Score</b><code>placement × completion² × (0.30 DRC + 0.25 pair skew + 0.15 length groups + 0.15 impedance width + 0.15 efficiency)</code></div>
+</div></div></section><section class="page">
+<div class="topline"><span>03 · The eval</span><span>Field Report · PCB Gold-Master Eval</span></div>
+<div class="foot"><span class="bug"><img src="assets/mark-black.png">Rauchwerk Research</span><span>Dave Rauchwerk · November 2026</span><span>07 / 10</span></div>
+<div class="body">
+<div class="kicker">First results</div>
+<h2>The open router connects the board and misses the physics.</h2>
+<p class="lead">Freerouting 2.5, run with no agent on the stripped boards, is the floor every method must beat. On boards without dense BGAs it completes 72–96% of connections, then fails exactly where high-frequency design lives: pair skew, length groups and impedance-correct widths. On the BGA-heavy HDMI bridge it stalls at 18%.</p>
+<div class="exk"><span>Exhibit 6</span>Freerouting baseline against the gold masters (best of 18 runs; 1.00 = the human original)</div>
+<table class="sm res"><tr><th>Board</th><th>Router time</th><th>Routed</th><th>DRC</th><th>Pair skew</th><th>Length groups</th><th>Imp. width</th><th>Efficiency</th><th>Reward</th></tr><tr><td>SI test board</td><td class=c>54 s</td><td class=c>90%</td><td class=c>1.00</td><td class=c>0.00</td><td class=c>1.00</td><td class=c>0.00</td><td class=c>1.00</td><td class=c><b>0.48</b></td></tr><tr><td>M.2 PCIe adapter</td><td class=c>112 s</td><td class=c>96%</td><td class=c>0.18</td><td class=c>0.11</td><td class=c>0.00</td><td class=c>0.43</td><td class=c>1.00</td><td class=c><b>0.27</b></td></tr><tr><td>HDMI–MIPI bridge</td><td class=c>181 s</td><td class=c>18%</td><td class=c>0.34</td><td class=c>0.00</td><td class=c>0.00</td><td class=c>0.00</td><td class=c>1.00</td><td class=c><b>0.01</b></td></tr><tr><td>GMSL deserializer</td><td class=c>534 s</td><td class=c>72%</td><td class=c>0.08</td><td class=c>0.29</td><td class=c>0.00</td><td class=c>0.00</td><td class=c>1.00</td><td class=c><b>0.13</b></td></tr></table>
+<p class="cap">Each column is the share of the human result achieved (DRC: penalty for errors beyond the gold board’s own). Runs on 1 CPU core under x86 emulation on an Apple M-series laptop; pass limits 1, 3 and 10, two seeds. Runs vary: on the PCIe adapter, reward ranged 0.21–0.27 across seeds and pass limits. Independent runs overlap the gold copper by about 1% (<code>gold_copy_fraction</code> 0.008–0.012). Oracle: 8 of 8 tasks score 1.00 through Harbor.</p>
+<div class="grid3" style="margin-top:8pt">
+ <div class="card"><h3>What works <span class="tag ok">Works well</span></h3>The pipeline end to end: pinned inputs, strip, separate verifier, oracle at 1.00, and a gold-copy check that flags any run reproducing the human copper.</div>
+ <div class="card"><h3>What the floor shows <span class="tag grow">Refine</span></h3>On the PCIe adapter the router made 96% of connections but only 1 of 9 pairs met the skew tolerance and 43% of high-speed copper used an impedance-correct width.</div>
+ <div class="card"><h3>Next runs <span class="tag next">Coming soon</span></h3>Agent runs through Harbor (Claude Code, Codex, OpenHands), KiCadRoutingTools with length matching, and the hard DDR tier with a full-wave check on sampled nets.</div>
+</div>
+<div class="note" style="margin-top:8pt"><b>Integrity.</b> Agents have network access, so a run could download the gold board. The verifier reports <code>gold_copy_fraction</code>, the share of segments that coincide with the human copper on a 10 µm grid; leaderboards disqualify runs above 0.5. Public boards may also sit in model training data, a contamination risk shared by every open benchmark.</div></div></section><section class="page">
+<div class="topline"><span>04 · The forecast</span><span>Field Report · PCB Gold-Master Eval</span></div>
+<div class="foot"><span class="bug"><img src="assets/mark-black.png">Rauchwerk Research</span><span>Dave Rauchwerk · November 2026</span><span>08 / 10</span></div>
+<div class="body">
+<div class="chead"><svg viewBox="0 0 410 410"><rect width="410" height="410" fill="#0a0a0a"/><rect x="30" y="32" width="106" height="96" fill="#3a3a3a"/><rect x="30" y="155" width="106" height="100" fill="#3a3a3a"/><rect x="30" y="285" width="106" height="100" fill="#3a3a3a"/><rect x="272" y="32" width="106" height="96" fill="#fff"/><text x="325.0" y="102.0" text-anchor="middle" font-family="Helvetica Neue,Inter,Arial" font-weight="800" font-size="62" fill="#000">4</text></svg><div><div class="kicker">Chapter 4 of 4 · Outcome against dollars and hours</div><h2>Below a few hundred dollars per board, time and the evaluator decide the outcome</h2></div></div>
+<div class="grid2" style="align-items:start;grid-template-columns:1.25fr 1fr;gap:12pt">
+<div><div class="exk"><span>Exhibit 7</span>Best achievable reward, hard tier (DDR5-class board)</div>
+<img src="m/fc_surface3d_hard.png" style="width:100%;display:block">
+<p class="cap">Envelope over seven strategies; floor contours at 0.3, 0.5, 0.7 and 0.8. The step near $300 is the surrogate’s data bill; the ridge near one day is its training time.</p></div>
+<div><div class="methods" style="margin-top:0"><span class="kicker">How the forecast works</span>
+<p>Each strategy has a fixed cost (training data, GPU fit), a cost and duration per candidate, a parallelism limit and a saturating return, G = g₀ + (g_max − g₀)(1 − (1 + N/n₀)<sup>−α</sup>), where N is the number of candidates the budget and the clock both allow. α = 0.6 and n₀ = 60 reproduce WireMask-EA’s diminishing returns. Starting points come from the measured baselines; ceilings for untested strategies are labelled assumptions. Prices: Modal CPU $0.047 per core-hour, A100 $2.50 per hour (7 Nov 2026). All parameters live in <code>forecast/forecast.toml</code>; <code>make forecast</code> redraws every chart.</p></div>
+<img src="m/fc_winner_hard.png" style="width:100%;display:block;margin-top:8pt">
+<p class="cap">Which strategy is best where (hard tier). Black: EM-trained surrogate; dark grey: deterministic SI tooling.</p>
+</div>
+</div>
+<div class="exk"><span>Exhibit 8</span>Reward against budget at 24 hours, hard tier</div>
+<img src="m/fc_budget_hard.png" style="width:100%;display:block">
+</div></section><section class="page">
+<div class="topline"><span>04 · Recommendations</span><span>Field Report · PCB Gold-Master Eval</span></div>
+<div class="foot"><span class="bug"><img src="assets/mark-black.png">Rauchwerk Research</span><span>Dave Rauchwerk · November 2026</span><span>09 / 10</span></div>
+<div class="body">
+<div class="kicker">Budgeting recommendations</div>
+<h2>Spend on parallel CPU and on the evaluator. Buy GPUs only after the solver earns them.</h2>
+<div class="exk"><span>Exhibit 9</span>Forecast reward by budget and wall clock (medium · hard tier)</div>
+<table class="sm fc"><tr><th>Budget per board</th><th>4 hours</th><th>1 day</th><th>1 week</th><th>Strategy that wins</th></tr>
+<tr><td>$100</td><td class=c>0.71 · 0.61</td><td class=c>0.78 · 0.66</td><td class=c>0.78 · 0.66</td><td>+ deterministic SI tooling</td></tr><tr><td>$1,000</td><td class=c>0.71 · 0.61</td><td class=c>0.82 · 0.70</td><td class=c>0.84 · 0.79</td><td>+ EM-trained SI surrogate</td></tr><tr><td>$10,000</td><td class=c>0.71 · 0.61</td><td class=c>0.82 · 0.70</td><td class=c>0.84 · 0.82</td><td>+ EM-trained SI surrogate</td></tr></table>
+<ol class="recs" style="margin-top:6pt">
+ <li><div><b>Cap routing compute at about $100 per board.</b><span>A medium-board candidate costs about one cent of CPU; $100 buys some 9,000 candidates, far past the point where search flattens.</span></div></li>
+ <li><div><b>Put the next $1,000 into the evaluator.</b><span>Build the SI tooling and an openEMS-trained surrogate for the hard tier; it is the only strategy whose ceiling rises with spend.</span></div></li>
+ <li><div><b>Buy wall clock with cores, not GPUs.</b><span>256 spot cores at about $4 an hour turn a one-week search into an overnight one. Benchmark openEMS’s new GPU engine before any GPU spend.</span></div></li>
+ <li><div><b>Fund RL only as a research line.</b><span>At about $3,000 and three days of fixed cost, it reaches less than search does today.</span></div></li>
+</ol>
+<div class="exk"><span>Exhibit 10</span>Reward against wall clock at $1,000, hard tier: the clock, not the budget, separates the strategies</div>
+<img src="m/fc_time_hard.png" style="width:78%;display:block">
+<div class="exk"><span>Exhibit 11</span>Phased plan</div>
+<div class="steps4">
+ <div><b>P0 · this week</b>Publish the eval; run three coding agents and KiCadRoutingTools through Harbor on the easy and medium tiers. Exit: a public leaderboard.</div>
+ <div><b>P1 · 2–3 weeks</b>Evolved routing recipes (pymoo) with deterministic SI fix-ups. Exit: beat Freerouting by 0.2 on the medium tier.</div>
+ <div><b>P2 · 1–2 months</b>gerber2ems sampling and an SI surrogate; full-wave checks on the top 5%. Exit: hard-tier pair and length scores above 0.8.</div>
+ <div><b>P3 · quarter</b>Placement tasks (unplaced boards), LLM-evolved router heuristics, then RL if the data supports it.</div>
+</div></div></section><section class="page dark">
+<div class="body" style="top:.9in">
+<div class="kicker" style="color:#9a9a98">Thanks</div>
+<h2 style="color:#fff;font-size:32pt;max-width:6.8in;margin-top:8pt">Measure the physics. Search before you learn. Keep the human copper as the answer key.</h2>
+<p class="lead" style="color:#d6d6d2;margin-top:14pt">Gold-master boards by Antmicro (Apache-2.0), fetched at pinned commits. Built with KiCad 10, Freerouting, Harbor, three.js and matplotlib. Research assisted by AI agents; every figure is reproducible with <code style="background:#1b1b1b;color:#fff">make all</code>.</p>
+<figure class="f fd"><img src="m/orin-exploded.png" style="height:3.1in;object-fit:cover;object-position:center"></figure>
+<div class="grid3" style="margin-top:14pt;color:#c9c9c7;font-size:8.6pt">
+ <div class="thanks"><span class="kicker">Repo</span>github.com/elevenarms/pcb-gold-eval</div>
+ <div class="thanks"><span class="kicker">Project page</span>pcb-gold-eval.vercel.app</div>
+ <div class="thanks"><span class="kicker">Series</span>Field Report 01 · build loop<br>Field Report 02 · agentic hardware<br>Case Study · PLM with agents<br>Field Report 03 · gold-master eval</div>
+</div></div>
+<div class="foot"><span class="bug"><img src="assets/mark-white.png">Rauchwerk Research</span><span>dbrauchwerk@gmail.com</span><span>10 / 10</span></div>
+</section></body></html>

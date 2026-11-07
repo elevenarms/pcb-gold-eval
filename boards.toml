@@ -1,0 +1,111 @@
+# Gold-master boards: Antmicro open hardware (Apache-2.0), pinned by commit and file sha256.
+# tier: easy | medium | hard. fab_evidence: why the layout counts as human-verified.
+
+[signal-integrity-test-board]
+repo = "antmicro/signal-integrity-test-board"
+commit = "de0b5922c372481bb146cbd1d0a9f3b7e97c124a"
+tier = "easy"
+fab_evidence = "measured-VNA-data"
+[signal-integrity-test-board.files.pcb]
+path = "si-simulation-test-board.kicad_pcb"
+sha256 = "ad22910fb65d87b9506a860a2fc9a6ad8ddb0af7743be3a9df40e4edd2c2a318"
+[signal-integrity-test-board.files.pro]
+path = "si-simulation-test-board.kicad_pro"
+sha256 = "f309d6a9f5a0555fc0ad1d05388b3b4b309863cbff8b0976b562579bd705b209"
+
+[m2-pcie-adapter]
+repo = "antmicro/m2-pcie-adapter"
+commit = "11844f18ce14393043affde9e7aa8d51c0cd3ba7"
+tier = "easy"
+fab_evidence = "unknown"
+[m2-pcie-adapter.files.pcb]
+path = "m2-pcie-adapter.kicad_pcb"
+sha256 = "36533460dd1e940f87672a101aca968ff0e2cc1687a26e02b32b2177f95414f5"
+[m2-pcie-adapter.files.pro]
+path = "m2-pcie-adapter.kicad_pro"
+sha256 = "7c5ae81fe95470b4affc53817c8bdc064d0e8f3f2b3ad5fb9c4eeab7f1fbd265"
+
+[hdmi-mipi-bridge]
+repo = "antmicro/hdmi-mipi-bridge"
+commit = "6c683289a3191ee6c92cf4f9065ca9b6cb2c0784"
+tier = "easy"
+fab_evidence = "photo"
+[hdmi-mipi-bridge.files.pcb]
+path = "antmicro-hdmi-mipi-bridge-hw.kicad_pcb"
+sha256 = "565fee5d249c0389b434458f0e5d21a97d377ae6d861dedfbdf5b4e5d5cd86a8"
+[hdmi-mipi-bridge.files.pro]
+path = "antmicro-hdmi-mipi-bridge-hw.kicad_pro"
+sha256 = "3cdcb503d115a2a62c005b430b5a0774baf2668527f404c673d19084f9d1a91c"
+
+[gmsl-deserializer]
+repo = "antmicro/gmsl-deserializer"
+commit = "43d9aad97bb4ee6b41d31b778ddc4b8d0eceaa63"
+tier = "medium"
+fab_evidence = "photo"
+[gmsl-deserializer.files.pcb]
+path = "gmsl-deserializer.kicad_pcb"
+sha256 = "85ce074fbe28119dd255a336a26358324c64322e60c6e1279d474e0bc3ce87d2"
+[gmsl-deserializer.files.pro]
+path = "gmsl-deserializer.kicad_pro"
+sha256 = "f2bdae84b017ad83052f27f376db36fe776f373c24fb8b3760de74f689c279a2"
+
+[jetson-orin-baseboard]
+repo = "antmicro/jetson-orin-baseboard"
+commit = "34f0e7f5fbca441191e20ed55d93cf8614e12bed"
+tier = "medium"
+fab_evidence = "sold"
+[jetson-orin-baseboard.files.dru]
+path = "jetson-orin-baseboard.kicad_dru"
+sha256 = "2139b5445b0bb88f7513be03a9b6f9698699b25cfb5d282e9c0f46505d5bfcc0"
+[jetson-orin-baseboard.files.pcb]
+path = "jetson-orin-baseboard.kicad_pcb"
+sha256 = "eaeb87f5bceb46097c8161cf5e990c3609bf667f5a53668f76aa93595bd636ca"
+[jetson-orin-baseboard.files.pro]
+path = "jetson-orin-baseboard.kicad_pro"
+sha256 = "6658f8b150d948bd1b133836cc21424e49e81b04bfceef1d9e4c969606e00935"
+
+[rdimm-ddr4-tester]
+repo = "antmicro/rdimm-ddr4-tester"
+commit = "e7c85ebc9eb35645a6c467b0362270a5792d2726"
+tier = "hard"
+fab_evidence = "published-use"
+[rdimm-ddr4-tester.files.dru]
+path = "data-center-rdimm-ddr4-tester.kicad_dru"
+sha256 = "59d9354b7dc08197c6c66dba4510e19d3dcc3a23b4157217070867b566c53f41"
+[rdimm-ddr4-tester.files.pcb]
+path = "data-center-rdimm-ddr4-tester.kicad_pcb"
+sha256 = "de397b73b29dec7a4f3e44868bc6abfed0f3be6622e27395ab272d0d0eae6b79"
+[rdimm-ddr4-tester.files.pro]
+path = "data-center-rdimm-ddr4-tester.kicad_pro"
+sha256 = "59464410ccf42b2238a0869bc79eda7b23f15a5c373749ae51c65c5b5fac7a50"
+
+[sodimm-ddr5-tester]
+repo = "antmicro/sodimm-ddr5-tester"
+commit = "05b265a75b87d63862323082bfdcb62949d22647"
+tier = "hard"
+fab_evidence = "photo"
+[sodimm-ddr5-tester.files.dru]
+path = "sodimm-ddr5-tester.kicad_dru"
+sha256 = "c552d5fb67e706fb6015f2da7d7fdc2e7a7453747f879d5a5c56a7ff7e512b00"
+[sodimm-ddr5-tester.files.pcb]
+path = "sodimm-ddr5-tester.kicad_pcb"
+sha256 = "6808d7b01dd8b5896b0a920ff73b11bf673f59eeb4d709babf0770d8aa2a1904"
+[sodimm-ddr5-tester.files.pro]
+path = "sodimm-ddr5-tester.kicad_pro"
+sha256 = "b44e08f8b5b86ffbf57461ac990108af44d95d56929989ff3af5128a83fa6e83"
+
+[rdimm-ddr5-tester]
+repo = "antmicro/rdimm-ddr5-tester"
+commit = "6bd485778de747d0e34551c4c34d2419e2c2d5b9"
+tier = "hard"
+fab_evidence = "VNA-comparison"
+[rdimm-ddr5-tester.files.dru]
+path = "data-center-rdimm-ddr5-tester.kicad_dru"
+sha256 = "2ea75f1eda038707dbd8a5e91316a61ed7c9626283c5fd3f2d20943ae0eb9980"
+[rdimm-ddr5-tester.files.pcb]
+path = "data-center-rdimm-ddr5-tester.kicad_pcb"
+sha256 = "2d5e5a547689ca3fd14682c21f077e658007f5245c473c6598c4785c8adaa6dc"
+[rdimm-ddr5-tester.files.pro]
+path = "data-center-rdimm-ddr5-tester.kicad_pro"
+sha256 = "bf66809ee42667212c29c0d4f2e704eaa3a93d0c2e9ac9584a86dddd1d173615"
+

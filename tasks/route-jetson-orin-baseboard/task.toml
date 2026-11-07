@@ -1,0 +1,24 @@
+schema_version = "1.4"
+artifacts = ["/app/board.kicad_pcb"]
+
+[task]
+name = "pcb-gold-eval/route-jetson-orin-baseboard"
+authors = [{ name = "Dave Rauchwerk", email = "dbrauchwerk@gmail.com" }]
+
+[metadata]
+category = "hardware-design"
+difficulty = "medium"
+difficulty_explanation = "8-layer board, 680 footprints, 208 diff-pair nets; gold master: antmicro/jetson-orin-baseboard@34f0e7f (sold)"
+tags = ["pcb", "routing", "signal-integrity", "kicad", "antmicro"]
+
+[verifier]
+environment_mode = "separate"
+timeout_sec = 1800
+
+[agent]
+timeout_sec = 7200
+
+[environment]
+cpus = 8
+memory_mb = 16384
+storage_mb = 20480

@@ -1,0 +1,130 @@
+{
+ "total": 154.45,
+ "segments": [
+  {
+   "visual": "still",
+   "frame": "intro",
+   "d": 6.125
+  },
+  {
+   "visual": "clip",
+   "clip": "ddr5-hs",
+   "frame": "cap_ddr5",
+   "d": 18.913
+  },
+  {
+   "visual": "still",
+   "frame": "chapter1",
+   "d": 2.5
+  },
+  {
+   "visual": "still",
+   "frame": "evidence",
+   "d": 23.492
+  },
+  {
+   "visual": "still",
+   "frame": "chapter2",
+   "d": 2.5
+  },
+  {
+   "visual": "still",
+   "frame": "tools",
+   "d": 19.834
+  },
+  {
+   "visual": "still",
+   "frame": "chapter3",
+   "d": 2.5
+  },
+  {
+   "visual": "clip",
+   "clip": "si",
+   "frame": "cap_si",
+   "d": 6.788
+  },
+  {
+   "visual": "clip",
+   "clip": "m2",
+   "frame": "cap_m2",
+   "d": 6.788
+  },
+  {
+   "visual": "clip",
+   "clip": "hdmi",
+   "frame": "cap_hdmi",
+   "d": 6.788
+  },
+  {
+   "visual": "clip",
+   "clip": "orin",
+   "frame": "cap_orin",
+   "d": 6.788
+  },
+  {
+   "visual": "still",
+   "frame": "result",
+   "d": 17.801
+  },
+  {
+   "visual": "still",
+   "frame": "chapter4",
+   "d": 2.5
+  },
+  {
+   "visual": "zoom",
+   "frame": "surface",
+   "share": 0.55,
+   "d": 12.437
+  },
+  {
+   "visual": "still",
+   "frame": "budget",
+   "share": 0.45,
+   "d": 10.176
+  },
+  {
+   "visual": "still",
+   "frame": "end",
+   "d": 8.52
+  }
+ ],
+ "audio": [
+  [
+   "s01a",
+   0.5
+  ],
+  [
+   "s01b",
+   2.061
+  ],
+  [
+   "s02",
+   6.625208
+  ],
+  [
+   "s03",
+   28.03825
+  ],
+  [
+   "s04",
+   54.030333
+  ],
+  [
+   "s05",
+   76.36483299999999
+  ],
+  [
+   "s06",
+   103.51716599999999
+  ],
+  [
+   "s07",
+   123.81799899999999
+  ],
+  [
+   "s08",
+   146.430582
+  ]
+ ]
+}

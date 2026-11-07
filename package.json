@@ -1,0 +1,6 @@
+{
+  "name": "pcb-gold-eval",
+  "private": true,
+  "description": "Node tooling for the report render and video capture",
+  "devDependencies": { "playwright-core": "1.56.1" }
+}

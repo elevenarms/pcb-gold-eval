@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PCB Gold-Master Eval · Rauchwerk Research</title>
+<meta name="description" content="Eight fabricated Antmicro boards, human copper as ground truth, a Harbor eval for high-frequency PCB routing and a compute forecast.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="assets/mark-black.png">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+
+<header class="hero dark">
+  <div class="wrap">
+    <div class="topline"><span>Rauchwerk Research · Field Report 03</span><span>November 2026</span></div>
+    <span class="kicker">Open benchmark · Antmicro gold masters · Harbor format</span>
+    <h1>PCB Gold-Master Eval</h1>
+    <p class="lead">Can machines route high-frequency boards like the engineers who shipped them? Eight fabricated Antmicro boards, human copper as ground truth, a Harbor eval and a compute forecast.</p>
+  </div>
+</header>
+
+<section class="viewer-band dark" id="viewer">
+  <div class="viewer-wrap">
+    <div class="stage" id="stage">
+      <canvas id="c"></canvas>
+      <div class="loading" id="loading">Loading board…</div>
+      <div class="hint">Drag to orbit · scroll to zoom</div>
+    </div>
+    <aside class="panel" id="panel">
+      <span class="kicker">The source material</span>
+      <label class="pick"><span>Board</span>
+        <select id="board"></select>
+      </label>
+      <div class="modes" role="tablist">
+        <button data-mode="assembled" class="on">Assembled</button>
+        <button data-mode="exploded">Exploded layers</button>
+        <button data-mode="hs">High-speed only</button>
+      </div>
+      <label class="slide" id="explodeWrap"><span>Layer separation</span>
+        <input type="range" id="explode" min="0" max="1" step="0.01" value="0.6">
+      </label>
+      <label class="check"><input type="checkbox" id="rotate" checked> Auto-rotate</label>
+      <dl class="facts" id="facts"></dl>
+      <p class="note" id="modeNote"></p>
+    </aside>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section class="sec" id="why">
+    <span class="kicker">Why gold masters</span>
+    <h2>The length and skew targets live only in the human copper, so the human copper has to be the rubric.</h2>
+    <p class="lead-ink">Antmicro’s rule files set track widths, diff-pair gaps and clearances per impedance class and layer, but none states a length or skew limit. The matching the designers did exists only as routed copper: tuning patterns and hand-drawn meanders. Each board in this set was fabricated or used, and every target the eval checks is derived from the board the engineers actually shipped.</p>
+    <div class="tiles">
+      <div class="tile"><b>8</b><span>open boards in three tiers: easy, medium and hard</span></div>
+      <div class="tile"><b>4–12</b><span>copper layers, 20 to 797 footprints per board</span></div>
+      <div class="tile"><b>Apache-2.0</b><span>every board, fetched at a pinned commit and checked by sha256</span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="first">
+    <span class="kicker">First result · preliminary, one board, one seed</span>
+    <h2>A board can be 92% routed and still score 0.25 against the human design.</h2>
+    <p class="lead-ink">Freerouting 2.5.0, run with no agent on the stripped M.2 PCIe adapter, connected most of the board in 103 seconds. Measured against the human copper it missed the high-frequency intent: widths, skew and matching.</p>
+    <div class="tiles four">
+      <div class="tile"><b>92%</b><span>completion in 103 s (7 of 93 connections left)</span></div>
+      <div class="tile"><b>47</b><span>track-width DRC errors the original does not have</span></div>
+      <div class="tile"><b>1 / 9</b><span>diff pairs within the skew tolerance</span></div>
+      <div class="tile"><b>40%</b><span>of controlled-impedance copper at a width the designers used</span></div>
+    </div>
+    <div id="results"><!--RESULTS--><span class="kicker">Baseline table · Freerouting 2.5, best of 18 runs · oracle 8/8</span><table class="tbl"><tr><th>Board</th><th>Tier</th><th>Oracle</th><th>Routed</th><th>Pair skew</th><th>Imp. width</th><th>Reward</th></tr><tr><td>SI test board</td><td>easy</td><td>1.00</td><td>90%</td><td>0.00</td><td>0.00</td><td><b>0.48</b></td></tr><tr><td>M.2 PCIe adapter</td><td>easy</td><td>1.00</td><td>96%</td><td>0.11</td><td>0.43</td><td><b>0.27</b></td></tr><tr><td>HDMI–MIPI bridge</td><td>easy</td><td>1.00</td><td>18%</td><td>0.00</td><td>0.00</td><td><b>0.01</b></td></tr><tr><td>GMSL deserializer</td><td>medium</td><td>1.00</td><td>72%</td><td>0.29</td><td>0.00</td><td><b>0.13</b></td></tr><tr><td>Jetson Orin baseboard</td><td>medium</td><td>1.00</td><td colspan=4 class=pend>running</td></tr><tr><td>RDIMM DDR4 tester</td><td>hard</td><td>1.00</td><td colspan=4 class=pend>running</td></tr><tr><td>SO-DIMM DDR5 tester</td><td>hard</td><td>1.00</td><td colspan=4 class=pend>running</td></tr><tr><td>RDIMM DDR5 tester</td><td>hard</td><td>1.00</td><td colspan=4 class=pend>running</td></tr></table><!--/RESULTS--></div>
+  </section>
+
+  <section class="sec" id="how">
+    <span class="kicker">How the eval works</span>
+    <h2>Strip the copper, let the agent route, score it against the board that shipped.</h2>
+    <ol class="steps">
+      <li><b>01</b><h3>Strip</h3><p>The environment fetches the gold board at its pinned commit, removes every track, via, tuning pattern and zone fill, and deletes the original in the same image layer.</p></li>
+      <li><b>02</b><h3>Route</h3><p>The agent gets the stripped board, its rules, KiCad 10.0.7, Freerouting 2.5.0 and Java 25, and saves the routed board in place.</p></li>
+      <li><b>03</b><h3>Re-fetch</h3><p>A separate verifier sandbox downloads the gold board again at the same commit and checks its sha256.</p></li>
+      <li><b>04</b><h3>Score</h3><p>Connectivity, DRC, skew, matching, widths and efficiency are measured against the gold, never against a hand-written target.</p></li>
+    </ol>
+    <div class="formula">
+      <span class="kicker">Reward</span>
+      <p>placement gate × completion² × (0.30 DRC + 0.25 pair skew + 0.15 length groups + 0.15 impedance width + 0.15 efficiency)</p>
+    </div>
+  </section>
+
+  <section class="sec" id="forecast">
+    <span class="kicker">Compute forecast</span>
+    <h2>Outcome against budget and wall clock.</h2>
+    <div id="fc"><!--FORECAST--><figure class="fig"><img src="assets/fig/fc_surface3d_hard.png" alt="Forecast surface: best achievable reward against budget and wall clock, hard tier"><figcaption>Best achievable reward over seven strategies, DDR5-class board. Parameters with sources: forecast/forecast.toml.</figcaption></figure><figure class="fig"><img src="assets/fig/fc_budget_hard.png" alt="Reward against budget at 24 hours"></figure><span class="kicker">Forecast reward, medium · hard tier</span><table class="tbl"><tr><th>Budget per board</th><th>4 hours</th><th>1 day</th><th>1 week</th></tr><tr><td>$100</td><td>0.71 · 0.61</td><td>0.78 · 0.66</td><td>0.78 · 0.66</td></tr><tr><td>$1,000</td><td>0.71 · 0.61</td><td>0.82 · 0.70</td><td>0.84 · 0.79</td></tr><tr><td>$10,000</td><td>0.71 · 0.61</td><td>0.82 · 0.70</td><td>0.84 · 0.82</td></tr></table><p class="lede">Spend on parallel CPU and on the evaluator. Buy GPUs only after the solver earns them.</p><!--/FORECAST--></div>
+  </section>
+
+  <section class="sec" id="video">
+    <span class="kicker">Explainer</span>
+    <h2>Two minutes on the eval.</h2>
+    <div class="slot vid"><video src="assets/video/explainer.mp4" controls preload="none" playsinline onerror="this.parentNode.classList.add('empty')"></video></div>
+  </section>
+
+  <section class="sec docs">
+    <!--DOCS--><a class="doc" href="assets/docs/field-report.pdf"><span class="kicker">Field report · 10 pages</span><h3>Routed is not the same as right: review, tools, eval and forecast</h3><p>PDF ↓</p></a><a class="doc" href="assets/docs/paper.pdf"><span class="kicker">Paper · arXiv draft</span><h3>Routed Is Not Right: a gold-master benchmark for machine routing of high-frequency PCBs</h3><p>PDF ↓</p></a><!--/DOCS-->
+  </section>
+
+</main>
+
+<footer class="dark">
+  <div class="wrap foot">
+    <div class="bug"><img src="assets/mark-white.png" alt=""><b>Rauchwerk Research</b></div>
+    <span>Dave Rauchwerk · November 2026</span>
+    <p class="credits">Boards © Antmicro, Apache-2.0, fetched at pinned commits from github.com/antmicro. Built with KiCad, Freerouting and three.js. Use the product. Show what works. Prototype what’s next.</p>
+  </div>
+</footer>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>

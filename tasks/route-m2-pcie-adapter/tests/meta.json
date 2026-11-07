@@ -1,0 +1,19 @@
+{
+ "gold_drc": {
+  "unconnected": 0,
+  "errors": {}
+ },
+ "stripped_unconnected": 93,
+ "stripped_errors": {
+  "solder_mask_bridge": 1
+ },
+ "stats": {
+  "copper_layers": 4,
+  "footprints": 20,
+  "nets": 65,
+  "pair_nets": 18,
+  "via_total": 92,
+  "length_total_mm": 1186.3
+ },
+ "seconds": 22.0
+}

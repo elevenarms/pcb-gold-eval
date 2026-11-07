@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- Rauchwerk Research video frames, 1920x1080. Show one frame with ?f=<name>; stills.mjs screenshots each. -->
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root { --paper:#f2f2f0; --ink:#0a0a0a; --mid:#555553; --grey:#8a8a88; --rule:#d6d6d3; --sans:"Helvetica Neue", Inter, Arial, sans-serif; --mono:"DM Mono", Menlo, monospace; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; font-family: var(--sans); color: var(--ink); }
+.f { display: none; position: absolute; inset: 0; padding: 110px 140px; }
+.f.on { display: block; }
+.paper { background: var(--paper); } .black { background: #000; color: #fff; }
+.k { font: 500 22px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--grey); }
+.black .k { color: #9a9a98; }
+h1 { font: 800 112px/0.95 var(--sans); letter-spacing: -3.5px; }
+h2 { font: 800 72px/1.02 var(--sans); letter-spacing: -2px; max-width: 1560px; }
+.rule { border-top: 4px solid var(--ink); }
+.chrome { position: absolute; left: 140px; right: 140px; bottom: 70px; display: flex; justify-content: space-between; align-items: center; font: 500 18px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mid); }
+.chrome .bug { display: flex; align-items: center; gap: 14px; font: 800 24px var(--sans); letter-spacing: -.3px; text-transform: none; color: var(--ink); }
+.chrome .bug img { height: 34px; }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; margin-top: 70px; }
+.tile { background: #fff; border-top: 4px solid var(--ink); padding: 28px 28px 30px; min-height: 290px; }
+.tile b { display: block; font: 800 104px/1 var(--sans); letter-spacing: -3px; }
+.tile span { display: block; margin-top: 18px; font: 500 27px/1.3 var(--sans); color: var(--mid); }
+.mark { width: 300px; height: 300px; }
+/* caption overlays (transparent) */
+.cap { background: linear-gradient(to top, rgba(0,0,0,.78) 0, rgba(0,0,0,.0) 300px); padding: 0; }
+.cap .t { position: absolute; left: 110px; bottom: 82px; color: #fff; }
+.cap .t .k { color: #c9c9c7; font-size: 24px; }
+.cap .t .n { font: 800 54px/1.05 var(--sans); letter-spacing: -1.2px; margin: 10px 0 12px; }
+.cap .bug { position: absolute; right: 110px; bottom: 84px; display: flex; align-items: center; gap: 12px; color: #fff; font: 800 24px var(--sans); }
+.cap .bug img { height: 32px; }
+.cap .hl { position: absolute; left: 110px; top: 96px; color: #fff; font: 800 76px/1 var(--sans); letter-spacing: -2.2px; }
+.rows4 { margin-top: 60px; }
+.rows4 .r { display: grid; grid-template-columns: 300px 1fr 300px; gap: 30px; align-items: baseline; border-top: 3px solid var(--ink); padding: 26px 0 28px; }
+.rows4 .r b { font: 800 44px var(--sans); letter-spacing: -1px; }
+.rows4 .r div { font: 500 36px/1.25 var(--sans); }
+.tag { justify-self: end; font: 500 20px var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 8px 14px; }
+.tag.ok { background: var(--ink); color: #fff; } .tag.next { border: 2px dashed var(--grey); color: var(--mid); }
+table { border-collapse: collapse; width: 100%; margin-top: 50px; font-size: 36px; }
+th { font: 500 21px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--grey); text-align: left; padding: 0 0 14px; border-bottom: 4px solid var(--ink); }
+td { padding: 22px 0; border-bottom: 1.5px solid var(--rule); } td.c, th.c { text-align: center; } td b { font-weight: 800; }
+</style></head><body>
+
+<!-- intro -->
+<section class="f black" id="intro">
+ <img src="../report/assets/rauchwerk-white.png" style="height:250px">
+ <div style="position:absolute;right:140px;top:116px;text-align:right" class="k">Field report · November 2026<br>Literature · Eval · Forecast</div>
+ <div style="position:absolute;left:140px;bottom:150px">
+  <div class="k" style="margin-bottom:26px">PCB Gold-Master Eval</div>
+  <h1 style="font-size:132px">Routed is not<br>the same as right</h1>
+  <div style="font:500 34px/1.3 var(--sans);color:#c9c9c7;margin-top:34px;max-width:1300px">Self-improving machine learning for high-frequency PCB routing, scored against eight boards engineers built and shipped.</div>
+ </div>
+</section>
+
+<!-- chapter cards -->
+<section class="f paper chapter" id="chapter">
+ <div style="display:flex;gap:80px;align-items:center;position:absolute;left:140px;top:300px">
+  <div class="mark" id="mk"></div>
+  <div><div class="k" id="ck"></div><h1 id="ct" style="margin-top:22px"></h1><div id="cs" style="font:500 40px var(--sans);color:var(--mid);margin-top:26px"></div></div>
+ </div>
+ <div class="chrome"><span class="bug"><img src="../report/assets/mark-black.png">Rauchwerk Research</span><span>PCB Gold-Master Eval</span><span id="cn"></span></div>
+</section>
+
+<!-- evidence -->
+<section class="f paper" id="evidence">
+ <div class="k">01 · The evidence · 30 sources graded</div>
+ <h2 style="margin-top:28px">Search beats reinforcement learning per dollar, so far.</h2>
+ <div class="tiles">
+  <div class="tile"><b>21×</b><span>CPU-hours RL used over simulated annealing in the only independent chip-placement rerun, for equal or worse results</span></div>
+  <div class="tile"><b>73%</b><span>of an evolutionary placer’s gain inside its first 300 of 2,000 evaluations</span></div>
+  <div class="tile"><b>τ 0.05</b><span>rank correlation between a proxy cost and timing: proxies mislead</span></div>
+  <div class="tile"><b>0</b><span>learned PCB methods that optimise signal integrity end to end</span></div>
+ </div>
+ <div class="chrome"><span class="bug"><img src="../report/assets/mark-black.png">Rauchwerk Research</span><span>Cheng, Kahng et al. ISPD 2023 · Shi et al. NeurIPS 2023</span><span>01 / 04</span></div>
+</section>
+
+<!-- tools -->
+<section class="f paper" id="tools">
+ <div class="k">02 · The tools · open source only</div>
+ <h2 style="margin-top:28px">The open stack is complete except for fast physics.</h2>
+ <div class="rows4">
+  <div class="r"><b>Route</b><div>KiCad 10 · Freerouting 2.5 · KiCadRoutingTools</div><span class="tag ok">Works well</span></div>
+  <div class="r"><b>Physics</b><div>openEMS · Antmicro gerber2ems · scikit-rf · PyBERT</div><span class="tag ok">Works well</span></div>
+  <div class="r"><b>Search</b><div>evosax · pymoo · Optuna · OpenEvolve</div><span class="tag ok">Works well</span></div>
+  <div class="r" style="border-bottom:3px solid var(--ink)"><b>Missing</b><div>Fast, faithful physics in the loop: GPU EM and trained surrogates</div><span class="tag next">Coming soon</span></div>
+ </div>
+ <div class="chrome"><span class="bug"><img src="../report/assets/mark-black.png">Rauchwerk Research</span><span>Repo data 7 Nov 2026</span><span>02 / 04</span></div>
+</section>
+
+<!-- result -->
+<section class="f paper" id="result">
+ <div class="k">03 · First result · Freerouting 2.5 · Antmicro M.2 PCIe adapter</div>
+ <h2 style="margin-top:28px">The open router connects the board and misses the physics.</h2>
+ <div class="tiles">
+  <div class="tile"><b>92%</b><span>of connections routed</span></div>
+  <div class="tile"><b>1 / 9</b><span>differential pairs within the skew tolerance the human met</span></div>
+  <div class="tile"><b>40%</b><span>of high-speed copper at an impedance-correct width</span></div>
+  <div class="tile" style="background:var(--ink);color:#fff"><b>0.25</b><span style="color:#c9c9c7">reward out of 1.00 (the human original)</span></div>
+ </div>
+ <div class="chrome"><span class="bug"><img src="../report/assets/mark-black.png">Rauchwerk Research</span><span>Oracle: 8 of 8 tasks score 1.00 in Harbor</span><span>03 / 04</span></div>
+</section>
+
+<!-- surface -->
+<section class="f paper" id="surface">
+ <div class="k">04 · The forecast · hard tier (DDR5-class board)</div>
+ <h2 style="margin-top:22px;font-size:60px">Best achievable reward against budget and wall clock</h2>
+ <img src="../report/m/fc_surface3d_hard.png" style="position:absolute;left:260px;top:245px;height:700px">
+ <div class="chrome"><span class="bug"><img src="../report/assets/mark-black.png">Rauchwerk Research</span><span>Forecast · parameters in forecast/forecast.toml</span><span>04 / 04</span></div>
+</section>
+
+<!-- budget -->
+<section class="f paper" id="budget">
+ <div class="k">04 · Budgeting recommendations</div>
+ <h2 style="margin-top:28px">Spend on parallel CPU and on the evaluator. Buy GPUs only after the solver earns them.</h2>
+ <table id="bt"><tr><th>Budget per board</th><th class="c">4 hours</th><th class="c">1 day</th><th class="c">1 week</th><th>Best strategy</th></tr></table>
+ <div style="font:500 22px var(--mono);color:var(--mid);margin-top:22px;letter-spacing:.04em">FORECAST REWARD, HARD TIER · 1.00 = THE HUMAN GOLD MASTER</div>
+ <div class="chrome"><span class="bug"><img src="../report/assets/mark-black.png">Rauchwerk Research</span><span>Modal CPU $0.047 per core-hour · 7 Nov 2026</span><span>04 / 04</span></div>
+</section>
+
+<!-- end -->
+<section class="f paper" id="end">
+ <img src="../report/assets/rauchwerk-black.png" style="height:170px">
+ <div class="k" style="margin-top:90px">Thanks</div>
+ <h1 style="font-size:96px;margin-top:20px;max-width:1600px">Measure the physics. Search before you learn. Keep the human copper as the answer key.</h1>
+ <div style="display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:40px;margin-top:80px;font:500 26px/1.5 var(--mono)">
+  <div class="rule" style="padding-top:16px"><div class="k" style="font-size:20px">Repo</div>github.com/elevenarms/pcb-gold-eval</div>
+  <div class="rule" style="padding-top:16px"><div class="k" style="font-size:20px">Project page</div>pcb-gold-eval.vercel.app</div>
+  <div class="rule" style="padding-top:16px"><div class="k" style="font-size:20px">Gold masters</div>Antmicro · Apache-2.0</div>
+ </div>
+ <div class="chrome"><span class="bug"><img src="../report/assets/mark-black.png">Rauchwerk Research</span><span>Dave Rauchwerk · November 2026</span><span>dbrauchwerk@gmail.com</span></div>
+</section>
+
+<!-- caption overlays (transparent) -->
+<section class="f cap" id="capf"><div class="hl" id="caphl"></div><div class="t"><div class="k" id="capk"></div><div class="n" id="capn"></div><div class="k" id="capr"></div></div>
+ <div class="bug"><img src="../report/assets/mark-white.png">Rauchwerk Research</div></section>
+
+<script>
+const CAPS = {
+ cap_ddr5: ["Gold master · hard tier", "RDIMM DDR5 tester: data nets only", "12 copper layers · 797 parts · github.com/antmicro/rdimm-ddr5-tester", "Routed by hand."],
+ cap_si:   ["Gold master · easy tier", "Signal-integrity test board", "4 copper layers · measured VNA data · github.com/antmicro/signal-integrity-test-board", ""],
+ cap_m2:   ["Gold master · easy tier", "M.2 PCIe adapter: PCIe pairs only", "4 copper layers · 18 pair nets · github.com/antmicro/m2-pcie-adapter", ""],
+ cap_hdmi: ["Gold master · easy tier", "HDMI to MIPI CSI-2 bridge", "4 copper layers · 121 parts · github.com/antmicro/hdmi-mipi-bridge", ""],
+ cap_orin: ["Gold master · medium tier", "Jetson Orin baseboard, layers apart", "8 copper layers · 680 parts · sold · github.com/antmicro/jetson-orin-baseboard", ""],
+};
+const CH = { 1: ["The evidence", "What the literature proves"], 2: ["The tools", "The open-source stack, scored"], 3: ["The eval", "Eight gold-master boards"], 4: ["The forecast", "Outcome against dollars and hours"] };
+function mark(active) {
+  const sq = { 1: [30, 32, 106, 96], 2: [30, 155, 106, 100], 3: [30, 285, 106, 100], 4: [272, 32, 106, 96] };
+  let s = '<svg viewBox="0 0 410 410" width="300" height="300"><rect width="410" height="410" fill="#0a0a0a"/>';
+  for (const [n, [x, y, w, h]] of Object.entries(sq)) {
+    s += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${+n === active ? "#fff" : "#3a3a3a"}"/>`;
+    if (+n === active) s += `<text x="${x + w / 2}" y="${y + h / 2 + 22}" text-anchor="middle" font-family="Helvetica Neue,Inter,Arial" font-weight="800" font-size="62" fill="#000">${n}</text>`;
+  }
+  return s + "</svg>";
+}
+const q = new URLSearchParams(location.search), f = q.get("f") || "intro";
+if (f.startsWith("chapter")) {
+  const n = +f.slice(7); document.getElementById("chapter").classList.add("on");
+  document.getElementById("mk").innerHTML = mark(n);
+  document.getElementById("ck").textContent = `Chapter ${n} of 4`;
+  document.getElementById("ct").textContent = CH[n][0]; document.getElementById("cs").textContent = CH[n][1];
+  document.getElementById("cn").textContent = `0${n} / 04`;
+} else if (f.startsWith("cap_")) {
+  const [k, n, r, hl] = CAPS[f]; document.getElementById("capf").classList.add("on");
+  capk.textContent = k; capn.textContent = n; capr.textContent = r; caphl.textContent = hl;
+} else document.getElementById(f).classList.add("on");
+if (f === "budget") {
+  const rows = JSON.parse(q.get("rows") || "[]"), t = document.getElementById("bt");
+  for (const b of [100, 1000, 10000]) {
+    const g = h => rows.find(r => r.budget === b && r.hours === h);
+    t.insertAdjacentHTML("beforeend", `<tr><td><b>$${b.toLocaleString("en-US")}</b></td>${[4, 24, 168].map(h => `<td class="c">${g(h).reward.toFixed(2)}</td>`).join("")}<td>${g(168).best.replace("+ ", "")}</td></tr>`);
+  }
+}
+document.body.style.background = f.startsWith("cap_") ? "transparent" : "";
+</script></body></html>

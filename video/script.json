@@ -1,0 +1,228 @@
+{
+ "_note": "Explainer for the PCB Gold-Master Eval (Rauchwerk Research house style). {RW} is replaced by the approved pronunciation markup for TTS only. No first person.",
+ "pronunciation_token": "{RW}",
+ "voice": {
+  "provider": "ElevenLabs",
+  "voice_id": "cjVigY5qzO86Huf0OWal",
+  "name": "Eric",
+  "model_id": "eleven_multilingual_v2",
+  "settings": {
+   "stability": 0.75,
+   "similarity_boost": 0.75,
+   "style": 0.0,
+   "use_speaker_boost": false,
+   "speed": 1.0
+  }
+ },
+ "pronunciation": {
+  "model_id": "eleven_flash_v2",
+  "markup": "<phoneme alphabet=\"cmu-arpabet\" ph=\"R AW1 SH W ER0 K\">Rauchwerk</phoneme>"
+ },
+ "scenes": [
+  {
+   "id": "s01",
+   "segments": [
+    {
+     "visual": "still",
+     "frame": "intro"
+    }
+   ],
+   "vo_parts": [
+    {
+     "id": "s01a",
+     "text": "{RW} Research.",
+     "pron": true
+    },
+    {
+     "id": "s01b",
+     "text": "Field report: the PCB Gold-Master Eval.",
+     "gap": 0.35
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "segments": [
+    {
+     "visual": "clip",
+     "clip": "ddr5-hs",
+     "frame": "cap_ddr5"
+    }
+   ],
+   "vo": "This is the memory bus of a DDR5 test board, routed by hand. Every serpentine is an engineer matching lengths to fractions of a millimetre. Machine-learning routers are judged on wirelength and design-rule checks. None of those scores sees this."
+  },
+  {
+   "id": "c1",
+   "chapter": 1
+  },
+  {
+   "id": "s03",
+   "segments": [
+    {
+     "visual": "still",
+     "frame": "evidence"
+    }
+   ],
+   "vo": "Thirty sources were graded. Search beats reinforcement learning per dollar, so far. In the one independent rerun of Google's chip placer, reinforcement learning used twenty-one times the CPU-hours of simulated annealing, for equal or worse results. And no learned PCB method optimises signal integrity end to end."
+  },
+  {
+   "id": "c2",
+   "chapter": 2
+  },
+  {
+   "id": "s04",
+   "segments": [
+    {
+     "visual": "still",
+     "frame": "tools"
+    }
+   ],
+   "vo": "The open-source stack is nearly complete. KiCad, Freerouting and KiCad Routing Tools to route. Open E M S and Antmicro's gerber-to-E M S for physics. Evolutionary and L L M-driven optimisers to search. The missing piece is fast, faithful physics."
+  },
+  {
+   "id": "c3",
+   "chapter": 3
+  },
+  {
+   "id": "s05",
+   "segments": [
+    {
+     "visual": "clip",
+     "clip": "si",
+     "frame": "cap_si"
+    },
+    {
+     "visual": "clip",
+     "clip": "m2",
+     "frame": "cap_m2"
+    },
+    {
+     "visual": "clip",
+     "clip": "hdmi",
+     "frame": "cap_hdmi"
+    },
+    {
+     "visual": "clip",
+     "clip": "orin",
+     "frame": "cap_orin"
+    }
+   ],
+   "vo": "So the eval comes first. Eight boards Antmicro built and open-sourced, from a four-layer test board to twelve-layer DDR5 testers. Each task strips the copper, asks an agent to route it, and scores the result against the human original: completion, design rules, pair skew, length matching and impedance-correct widths. The human copper scores itself a perfect one, on all eight boards."
+  },
+  {
+   "id": "s06",
+   "segments": [
+    {
+     "visual": "still",
+     "frame": "result"
+    }
+   ],
+   "vo": "The open-source router connects the board, and misses the physics. On the M.2 PCIe adapter it made ninety-two per cent of the connections, but only one pair in nine met the skew target. Reward: zero point two five, out of one."
+  },
+  {
+   "id": "c4",
+   "chapter": 4
+  },
+  {
+   "id": "s07",
+   "segments": [
+    {
+     "visual": "zoom",
+     "frame": "surface",
+     "share": 0.55
+    },
+    {
+     "visual": "still",
+     "frame": "budget",
+     "share": 0.45
+    }
+   ],
+   "vo": "A forecast built from published scaling results and measured costs says compute is cheap: a routing candidate costs about a cent. Below a few hundred dollars per board, wall-clock time and the evaluator decide the outcome. Spend on parallel CPU and on the evaluator. Buy GPUs only after the solver earns them."
+  },
+  {
+   "id": "s08",
+   "end": true,
+   "segments": [
+    {
+     "visual": "still",
+     "frame": "end"
+    }
+   ],
+   "vo": "Measure the physics. Search before you learn. Keep the human copper as the answer key."
+  }
+ ],
+ "chapters": {
+  "1": [
+   "The evidence",
+   "What the literature proves"
+  ],
+  "2": [
+   "The tools",
+   "The open-source stack, scored"
+  ],
+  "3": [
+   "The eval",
+   "Eight gold-master boards"
+  ],
+  "4": [
+   "The forecast",
+   "Outcome against dollars and hours"
+  ]
+ },
+ "clips": {
+  "ddr5-hs": {
+   "board": "rdimm-ddr5-tester",
+   "mode": "hs",
+   "seconds": 21,
+   "zoom": 1.25
+  },
+  "si": {
+   "board": "signal-integrity-test-board",
+   "mode": "assembled",
+   "seconds": 9
+  },
+  "m2": {
+   "board": "m2-pcie-adapter",
+   "mode": "hs",
+   "seconds": 9,
+   "zoom": 1.1
+  },
+  "hdmi": {
+   "board": "hdmi-mipi-bridge",
+   "mode": "assembled",
+   "seconds": 9
+  },
+  "orin": {
+   "board": "jetson-orin-baseboard",
+   "mode": "exploded",
+   "explode": 1,
+   "seconds": 9,
+   "zoom": 1.2
+  }
+ },
+ "kokoro": {
+  "_note": "Kokoro-82M v1.0 (hexgrad, Apache-2.0) via kokoro-onnx 0.4.9; files from github.com/thewh1teagle/kokoro-onnx releases, sha256-pinned.",
+  "release": "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0",
+  "files": {
+   "kokoro-v1.0.onnx": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
+   "voices-v1.0.bin": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d"
+  },
+  "voice": "am_michael",
+  "speed": 1.0,
+  "rauchwerk": "Rowshwerk",
+  "say": {
+   "Open E M S": "Open E-M-S",
+   "gerber-to-E M S": "gerber-to-E-M-S",
+   "L L M-driven": "L-L-M-driven",
+   "DDR5": "D-D-R-five",
+   "M.2": "M-dot-two",
+   "PCIe": "P-C-I-E",
+   "CPU-hours": "C-P-U hours",
+   "GPUs": "gee-pee-yous",
+   "CPU": "C-P-U",
+   "PCB": "P-C-B",
+   "KiCad": "Key-Cad"
+  }
+ },
+ "_voice_note": "The ElevenLabs block is kept for reference; ElevenLabs credits were exhausted on 2026-11-07, so the release uses Kokoro."
+}

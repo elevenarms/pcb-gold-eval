@@ -1,0 +1,154 @@
+\begin{thebibliography}{23}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[fre(2026)]{freerouting}
+Freerouting: an advanced autorouter for all {PCB} programs.
+\newblock \url{https://github.com/freerouting/freerouting}, 2026.
+\newblock Version 2.5.0.
+
+\bibitem[har(2026)]{harbor}
+Harbor: a framework for evaluating and optimizing agents and models in
+  container environments.
+\newblock \url{https://github.com/harbor-framework/harbor}, 2026.
+\newblock Version 0.25.0.
+
+\bibitem[{Antmicro}(2026)]{gerber2ems}
+{Antmicro}.
+\newblock gerber2ems: {PCB} signal-integrity simulation with {openEMS}.
+\newblock \url{https://github.com/antmicro/gerber2ems}, 2026.
+
+\bibitem[Cheng et~al.(2023)Cheng, Kahng, Kundu, Wang, and
+  Wang]{cheng2023assessment}
+Chung-Kuan Cheng, Andrew~B. Kahng, Sayak Kundu, Yucheng Wang, and Zhiang Wang.
+\newblock Assessment of reinforcement learning for macro placement.
+\newblock In \emph{Proceedings of the International Symposium on Physical
+  Design (ISPD)}, 2023.
+\newblock \doi{10.1145/3569052.3578926}.
+\newblock Extended version: arXiv:2302.11014.
+
+\bibitem[Geng et~al.(2024)]{geng2024efficientplace}
+Zijie Geng et~al.
+\newblock Reinforcement learning within tree search for fast macro placement.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning (ICML)}, volume 235 of \emph{PMLR}, pages 15402--15417, 2024.
+
+\bibitem[Goldie et~al.(2024)Goldie, Mirhoseini, and Dean]{goldie2024chip}
+Anna Goldie, Azalia Mirhoseini, and Jeff Dean.
+\newblock That chip has sailed: A critique of unfounded skepticism around {AI}
+  for chip design, 2024.
+
+\bibitem[Huang et~al.(2021)Huang, Wang, Li, Hao, Chen, and
+  Zhu]{huang2021rankingcost}
+Shiyu Huang, Bin Wang, Dong Li, Jianye Hao, Ting Chen, and Jun Zhu.
+\newblock Ranking cost: Building an efficient and scalable circuit routing
+  planner with evolution-based optimization, 2021.
+
+\bibitem[Kahng et~al.(2026)Kahng, Kundu, and Pramanik]{kahng2026helix}
+Andrew~B. Kahng, Sayak Kundu, and Bodhisatta Pramanik.
+\newblock {HELIX}: Placement heuristics evolution via {LLM}-instructed code
+  exploration.
+\newblock In \emph{Proceedings of the International Conference on
+  Computer-Aided Design (ICCAD)}, 2026.
+\newblock \doi{10.1145/3831252.3834232}.
+
+\bibitem[{Koppar AI}(2026)]{zap25}
+{Koppar AI}.
+\newblock autorouter-bench.
+\newblock \url{https://github.com/Koppar-AI/autorouter-bench}, 2026.
+
+\bibitem[Lai et~al.(2022)Lai, Mu, and Luo]{lai2022maskplace}
+Yao Lai, Yao Mu, and Ping Luo.
+\newblock {MaskPlace}: Fast chip placement via reinforced visual representation
+  learning, 2022.
+
+\bibitem[Lai et~al.(2023)]{lai2023chipformer}
+Yao Lai et~al.
+\newblock {ChiPFormer}: Transferable chip placement via offline decision
+  transformer.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning (ICML)}, volume 202 of \emph{PMLR}, 2023.
+\newblock arXiv:2306.14744.
+
+\bibitem[Lin et~al.(2019)]{lin2019dreamplace}
+Yibo Lin et~al.
+\newblock {DREAMPlace}: Deep learning toolkit-enabled {GPU} acceleration for
+  modern {VLSI} placement.
+\newblock In \emph{Proceedings of the Design Automation Conference (DAC)},
+  2019.
+\newblock \doi{10.1145/3316781.3317803}.
+
+\bibitem[Markov(2024)]{markov2024reevaluating}
+Igor~L. Markov.
+\newblock Reevaluating {Google's} reinforcement learning for {IC} macro
+  placement.
+\newblock \emph{Communications of the ACM}, 2024.
+\newblock \doi{10.1145/3676845}.
+
+\bibitem[Mirhoseini et~al.(2021)Mirhoseini, Goldie,
+  et~al.]{mirhoseini2021graph}
+Azalia Mirhoseini, Anna Goldie, et~al.
+\newblock A graph placement methodology for fast chip design.
+\newblock \emph{Nature}, 594:\penalty0 207--212, 2021.
+\newblock \doi{10.1038/s41586-021-03544-w}.
+
+\bibitem[Novikov et~al.(2025)]{novikov2025alphaevolve}
+Alexander Novikov et~al.
+\newblock {AlphaEvolve}: A coding agent for scientific and algorithmic
+  discovery, 2025.
+
+\bibitem[Romera-Paredes et~al.(2024)]{romeraparedes2024funsearch}
+Bernardino Romera-Paredes et~al.
+\newblock Mathematical discoveries from program search with large language
+  models.
+\newblock \emph{Nature}, 625:\penalty0 468--475, 2024.
+\newblock \doi{10.1038/s41586-023-06924-6}.
+
+\bibitem[Shi et~al.(2023)Shi, Xue, Song, and Qian]{shi2023wiremask}
+Yunqi Shi, Ke~Xue, Lei Song, and Chao Qian.
+\newblock Macro placement by wire-mask-guided black-box optimization.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2023.
+\newblock arXiv:2306.16844.
+
+\bibitem[Song et~al.(2026)Song, Park, Choi, Bae, Jeong, Park, and
+  Lee]{song2026pcbworld}
+Hyungseok Song, Junseok Park, Won-Seok Choi, Seohui Bae, Han-Seul Jeong,
+  Youngjoon Park, and Soonyoung Lee.
+\newblock {PCBWorld}: A benchmark environment for engine-grounded {PCB} design
+  automation, 2026.
+\newblock KDD 2026 workshop (non-archival).
+
+\bibitem[Vassallo and Bajada(2024)]{vassallo2024learning}
+Luke Vassallo and Josef Bajada.
+\newblock Learning circuit placement techniques through reinforcement learning
+  with adaptive rewards.
+\newblock In \emph{Design, Automation and Test in Europe (DATE)}, 2024.
+\newblock \doi{10.23919/DATE58400.2024.10546526}.
+
+\bibitem[Wang et~al.(2024)]{wang2024chipbench}
+Zhihai Wang et~al.
+\newblock Benchmarking end-to-end performance of {AI}-based chip placement
+  algorithms, 2024.
+
+\bibitem[Withoft et~al.(2026)Withoft, John, Ecik, Bruning, and
+  Gotze]{withoft2026surrogate}
+Julian Withoft, Werner John, Emre Ecik, Ralf Bruning, and Jurgen Gotze.
+\newblock Buffer-parameterized machine learning surrogate models for
+  cross-technology signal integrity analysis and optimization, 2026.
+
+\bibitem[Yao et~al.(2025)Yao, Jiang, Zhao, Liao, Lin, and Yu]{yao2025evolution}
+Xufeng Yao, Jiaxi Jiang, Yuxuan Zhao, Peiyu Liao, Yibo Lin, and Bei Yu.
+\newblock Evolution of optimization algorithms for global placement via large
+  language models, 2025.
+
+\bibitem[Zhang et~al.(2021)Zhang, Juang, Kiguradze, Pu, Jin, Wu, Yang, and
+  Hwang]{zhang2021pdn}
+Ling Zhang, Jack Juang, Zurab Kiguradze, Bo~Pu, Shuai Jin, Songping Wu, Zhiping
+  Yang, and Chulsoon Hwang.
+\newblock Fast {PDN} impedance prediction using deep learning, 2021.
+
+\end{thebibliography}
