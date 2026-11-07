@@ -26,6 +26,8 @@ h3 { font: 700 17px/1.2 var(--sans); margin: 0 0 6px; }
 #c { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; }
 #c:active { cursor: grabbing; }
 .loading { position: absolute; left: 24px; top: 20px; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #9a9a98; }
+.done { display: none; position: absolute; right: 16px; top: 14px; background: #fff; color: #000; border: 0; border-radius: 0; padding: 8px 14px; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+@media (pointer: coarse) { .stage.active .done { display: block; } .stage:not(.active) .hint { color: #fff; } }
 .hint { position: absolute; left: 24px; bottom: 18px; font: 500 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #6a6a68; }
 .panel { border-left: 1px solid #222; padding: 26px 24px; display: flex; flex-direction: column; gap: 16px; }
 .panel .kicker { color: #9a9a98; }
@@ -85,7 +87,8 @@ body.noui .stage { position: fixed; inset: 0; min-height: 0; }
 @media (max-width: 900px) {
   .wrap { padding: 0 20px; }
   .viewer-wrap { grid-template-columns: 1fr; }
-  .stage { min-height: 420px; height: 62vh; }
+  /* svh, not vh: iOS vh grows when the toolbar hides, which resized the canvas mid-scroll */
+  .stage { min-height: 360px; height: 62vh; height: 62svh; }
   .panel { border-left: 0; border-top: 1px solid #222; }
   .modes { grid-template-columns: repeat(3, 1fr); }
   .modes button { text-align: center; padding: 9px 4px; font-size: 10px; }
@@ -109,3 +112,8 @@ body.noui .stage { position: fixed; inset: 0; min-height: 0; }
 a.doc { display: block; text-decoration: none; background: #fff; border-top: 1.5px solid var(--ink); padding: 16px 18px; }
 a.doc:hover { background: var(--ink); color: #fff; }
 a.doc p { margin: 8px 0 0; font: 500 12px var(--mono); }
+
+/* wide tables scroll inside their own box on phones instead of widening the page */
+.tblwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tblwrap .tbl { min-width: 520px; }
+html, body { overflow-x: clip; }

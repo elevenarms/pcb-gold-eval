@@ -12,12 +12,14 @@ best = {}
 for r in runs:
     if r.get("reward") is not None and (r["board"] not in best or r["reward"] > best[r["board"]]["reward"]):
         best[r["board"]] = r
+# boards with no finished baseline run: why (shown in place of the numbers)
+PENDING = {"jetson-orin-baseboard": "timed out · 90 min under emulation"}
 oracle = [json.load(open(f)) for f in glob.glob(f"{R}/jobs/oracle-all/*/verifier/reward.json")]
 rows = "".join(f"<tr><td>{NAME[b]}</td><td>{B[b]['tier']}</td><td>1.00</td>" + (
     f"<td>{best[b]['completion']*100:.0f}%</td><td>{best[b]['pair_skew']:.2f}</td><td>{best[b]['impedance_width']:.2f}</td><td><b>{best[b]['reward']:.2f}</b></td>"
-    if b in best else "<td colspan=4 class=pend>running</td>") + "</tr>" for b in B)
+    if b in best else f"<td colspan=4 class=pend>{PENDING.get(b, 'not run yet')}</td>") + "</tr>" for b in B)
 results = (f'<span class="kicker">Baseline table · Freerouting 2.5, best of {len(runs)} runs · oracle {sum(o.get("reward")==1.0 for o in oracle)}/{len(oracle) or 8}</span>'
-           f'<table class="tbl"><tr><th>Board</th><th>Tier</th><th>Oracle</th><th>Routed</th><th>Pair skew</th><th>Imp. width</th><th>Reward</th></tr>{rows}</table>')
+           f'<div class="tblwrap"><table class="tbl"><tr><th>Board</th><th>Tier</th><th>Oracle</th><th>Routed</th><th>Pair skew</th><th>Imp. width</th><th>Reward</th></tr>{rows}</table></div>')
 fc = json.load(open(f"{R}/forecast/forecast.json"))
 os.makedirs(f"{S}/assets/fig", exist_ok=True)
 frows = "".join(f"<tr><td>${b:,}</td>" + "".join(
@@ -26,7 +28,7 @@ frows = "".join(f"<tr><td>${b:,}</td>" + "".join(
 forecast = ('<figure class="fig"><img src="assets/fig/fc_surface3d_hard.png" alt="Forecast surface: best achievable reward against budget and wall clock, hard tier">'
             '<figcaption>Best achievable reward over seven strategies, DDR5-class board. Parameters with sources: forecast/forecast.toml.</figcaption></figure>'
             '<figure class="fig"><img src="assets/fig/fc_budget_hard.png" alt="Reward against budget at 24 hours"></figure>'
-            f'<span class="kicker">Forecast reward, medium · hard tier</span><table class="tbl"><tr><th>Budget per board</th><th>4 hours</th><th>1 day</th><th>1 week</th></tr>{frows}</table>'
+            f'<span class="kicker">Forecast reward, medium · hard tier</span><div class="tblwrap"><table class="tbl"><tr><th>Budget per board</th><th>4 hours</th><th>1 day</th><th>1 week</th></tr>{frows}</table></div>'
             '<p class="lede">Spend on parallel CPU and on the evaluator. Buy GPUs only after the solver earns them.</p>')
 os.makedirs(f"{S}/assets/docs", exist_ok=True)
 docs = []

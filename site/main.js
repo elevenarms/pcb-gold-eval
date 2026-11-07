@@ -36,8 +36,12 @@ if (q.get("ui") === "0") document.body.classList.add("noui");
 // ---------------------------------------------------------------- renderer
 const canvas = document.getElementById("c");
 const stage = document.getElementById("stage");
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+// Touch screens (iOS Safari above all) get a lower pixel ratio and no preserveDrawingBuffer: both cost GPU memory,
+// and iOS kills the WebGL context (or the tab) when a page uses too much. Capture mode (?ui=0) keeps the buffer.
+const coarse = matchMedia("(pointer: coarse)").matches;
+const capture = q.get("ui") === "0";
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: capture });
+renderer.setPixelRatio(Math.min(devicePixelRatio, coarse ? 1.5 : 2));
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 0.95;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -59,6 +63,33 @@ const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
 controls.autoRotateSpeed = 0.6;
+
+// ---------------------------------------------------------------- scroll-safe interaction
+// OrbitControls sets touch-action:none on the canvas and eats wheel events, so a viewer this tall traps page
+// scrolling (one-finger swipes rotate instead of scroll on iOS; trackpad scroll zooms on desktop Safari).
+// The viewer therefore starts passive: touch devices tap to explore (and tap Done to give scrolling back);
+// desktop drags to orbit at any time but only zooms after a click inside the viewer, until the pointer leaves.
+const hint = document.getElementById("hint");
+const done = document.getElementById("done");
+function setActive(on) {
+  stage.classList.toggle("active", on);
+  if (coarse) {
+    controls.enabled = on;
+    canvas.style.touchAction = on ? "none" : "auto";
+    hint.textContent = on ? "Drag to orbit · pinch to zoom" : "Tap to explore the board";
+  } else {
+    controls.enableZoom = on;
+    hint.textContent = on ? "Drag to orbit · scroll to zoom" : "Drag to orbit · click to zoom";
+  }
+}
+if (coarse) {
+  stage.addEventListener("click", (e) => { if (!stage.classList.contains("active") && e.target !== done) setActive(true); });
+  done.addEventListener("click", (e) => { e.stopPropagation(); setActive(false); });
+} else {
+  canvas.addEventListener("click", () => setActive(true));
+  stage.addEventListener("pointerleave", () => setActive(false));
+}
+setActive(capture);
 
 const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
 const cache = new Map();
@@ -102,7 +133,14 @@ async function show() {
   }
   const groups = await Promise.all(parts);
   if (my !== token) return;
-  if (root) scene.remove(root);
+  if (root) {
+    scene.remove(root);
+    // On phones, free the previous board's GPU buffers instead of keeping every board resident.
+    if (coarse) {
+      root.traverse((o) => o.isMesh && o.geometry.dispose());
+      for (const u of cache.keys()) if (!u.includes(`/${id}`)) cache.delete(u);
+    }
+  }
   root = new THREE.Group();
   groups.forEach((g) => root.add(g));
   root.scale.setScalar(1000); // metres -> millimetres
@@ -189,10 +227,24 @@ function resize() {
 }
 new ResizeObserver(resize).observe(stage);
 resize();
-renderer.setAnimationLoop(() => {
+const loop = () => {
   controls.autoRotate = state.rotate;
   controls.update();
   renderer.render(scene, camera);
+};
+renderer.setAnimationLoop(loop);
+// Stop rendering while the viewer is off screen (keeps scrolling smooth on phones) and hand scrolling back.
+new IntersectionObserver(([e]) => {
+  renderer.setAnimationLoop(e.isIntersecting ? loop : null);
+  if (!e.isIntersecting && !capture) setActive(false);
+}).observe(stage);
+// iOS drops the WebGL context under memory pressure; say so instead of leaving a black box.
+canvas.addEventListener("webglcontextlost", (e) => {
+  e.preventDefault();
+  const l = document.getElementById("loading");
+  l.textContent = "3D view paused: the browser ran out of graphics memory. Reload, or pick a smaller board.";
+  l.style.display = "block";
 });
+canvas.addEventListener("webglcontextrestored", () => { document.getElementById("loading").textContent = "Loading board…"; cache.clear(); show(); });
 sync();
 show().then(() => { window.__ready = true; });

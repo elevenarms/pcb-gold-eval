@@ -32,7 +32,8 @@
     <div class="stage" id="stage">
       <canvas id="c"></canvas>
       <div class="loading" id="loading">Loading board…</div>
-      <div class="hint">Drag to orbit · scroll to zoom</div>
+      <div class="hint" id="hint">Drag to orbit · click to zoom</div>
+      <button class="done" id="done" type="button">Done</button>
     </div>
     <aside class="panel" id="panel">
       <span class="kicker">The source material</span>
@@ -77,7 +78,7 @@
       <div class="tile"><b>1 / 9</b><span>diff pairs within the skew tolerance</span></div>
       <div class="tile"><b>40%</b><span>of controlled-impedance copper at a width the designers used</span></div>
     </div>
-    <div id="results"><!--RESULTS--><span class="kicker">Baseline table · Freerouting 2.5, best of 18 runs · oracle 8/8</span><table class="tbl"><tr><th>Board</th><th>Tier</th><th>Oracle</th><th>Routed</th><th>Pair skew</th><th>Imp. width</th><th>Reward</th></tr><tr><td>SI test board</td><td>easy</td><td>1.00</td><td>90%</td><td>0.00</td><td>0.00</td><td><b>0.48</b></td></tr><tr><td>M.2 PCIe adapter</td><td>easy</td><td>1.00</td><td>96%</td><td>0.11</td><td>0.43</td><td><b>0.27</b></td></tr><tr><td>HDMI–MIPI bridge</td><td>easy</td><td>1.00</td><td>18%</td><td>0.00</td><td>0.00</td><td><b>0.01</b></td></tr><tr><td>GMSL deserializer</td><td>medium</td><td>1.00</td><td>72%</td><td>0.29</td><td>0.00</td><td><b>0.13</b></td></tr><tr><td>Jetson Orin baseboard</td><td>medium</td><td>1.00</td><td colspan=4 class=pend>running</td></tr><tr><td>RDIMM DDR4 tester</td><td>hard</td><td>1.00</td><td colspan=4 class=pend>running</td></tr><tr><td>SO-DIMM DDR5 tester</td><td>hard</td><td>1.00</td><td colspan=4 class=pend>running</td></tr><tr><td>RDIMM DDR5 tester</td><td>hard</td><td>1.00</td><td colspan=4 class=pend>running</td></tr></table><!--/RESULTS--></div>
+    <div id="results"><!--RESULTS--><span class="kicker">Baseline table · Freerouting 2.5, best of 18 runs · oracle 8/8</span><div class="tblwrap"><table class="tbl"><tr><th>Board</th><th>Tier</th><th>Oracle</th><th>Routed</th><th>Pair skew</th><th>Imp. width</th><th>Reward</th></tr><tr><td>SI test board</td><td>easy</td><td>1.00</td><td>90%</td><td>0.00</td><td>0.00</td><td><b>0.48</b></td></tr><tr><td>M.2 PCIe adapter</td><td>easy</td><td>1.00</td><td>96%</td><td>0.11</td><td>0.43</td><td><b>0.27</b></td></tr><tr><td>HDMI–MIPI bridge</td><td>easy</td><td>1.00</td><td>18%</td><td>0.00</td><td>0.00</td><td><b>0.01</b></td></tr><tr><td>GMSL deserializer</td><td>medium</td><td>1.00</td><td>72%</td><td>0.29</td><td>0.00</td><td><b>0.13</b></td></tr><tr><td>Jetson Orin baseboard</td><td>medium</td><td>1.00</td><td colspan=4 class=pend>timed out · 90 min under emulation</td></tr><tr><td>RDIMM DDR4 tester</td><td>hard</td><td>1.00</td><td colspan=4 class=pend>not run yet</td></tr><tr><td>SO-DIMM DDR5 tester</td><td>hard</td><td>1.00</td><td colspan=4 class=pend>not run yet</td></tr><tr><td>RDIMM DDR5 tester</td><td>hard</td><td>1.00</td><td colspan=4 class=pend>not run yet</td></tr></table></div><!--/RESULTS--></div>
   </section>
 
   <section class="sec" id="how">
@@ -98,7 +99,7 @@
   <section class="sec" id="forecast">
     <span class="kicker">Compute forecast</span>
     <h2>Outcome against budget and wall clock.</h2>
-    <div id="fc"><!--FORECAST--><figure class="fig"><img src="assets/fig/fc_surface3d_hard.png" alt="Forecast surface: best achievable reward against budget and wall clock, hard tier"><figcaption>Best achievable reward over seven strategies, DDR5-class board. Parameters with sources: forecast/forecast.toml.</figcaption></figure><figure class="fig"><img src="assets/fig/fc_budget_hard.png" alt="Reward against budget at 24 hours"></figure><span class="kicker">Forecast reward, medium · hard tier</span><table class="tbl"><tr><th>Budget per board</th><th>4 hours</th><th>1 day</th><th>1 week</th></tr><tr><td>$100</td><td>0.71 · 0.61</td><td>0.78 · 0.66</td><td>0.78 · 0.66</td></tr><tr><td>$1,000</td><td>0.71 · 0.61</td><td>0.82 · 0.70</td><td>0.84 · 0.79</td></tr><tr><td>$10,000</td><td>0.71 · 0.61</td><td>0.82 · 0.70</td><td>0.84 · 0.82</td></tr></table><p class="lede">Spend on parallel CPU and on the evaluator. Buy GPUs only after the solver earns them.</p><!--/FORECAST--></div>
+    <div id="fc"><!--FORECAST--><figure class="fig"><img src="assets/fig/fc_surface3d_hard.png" alt="Forecast surface: best achievable reward against budget and wall clock, hard tier"><figcaption>Best achievable reward over seven strategies, DDR5-class board. Parameters with sources: forecast/forecast.toml.</figcaption></figure><figure class="fig"><img src="assets/fig/fc_budget_hard.png" alt="Reward against budget at 24 hours"></figure><span class="kicker">Forecast reward, medium · hard tier</span><div class="tblwrap"><table class="tbl"><tr><th>Budget per board</th><th>4 hours</th><th>1 day</th><th>1 week</th></tr><tr><td>$100</td><td>0.71 · 0.61</td><td>0.78 · 0.66</td><td>0.78 · 0.66</td></tr><tr><td>$1,000</td><td>0.71 · 0.61</td><td>0.82 · 0.70</td><td>0.84 · 0.79</td></tr><tr><td>$10,000</td><td>0.71 · 0.61</td><td>0.82 · 0.70</td><td>0.84 · 0.82</td></tr></table></div><p class="lede">Spend on parallel CPU and on the evaluator. Buy GPUs only after the solver earns them.</p><!--/FORECAST--></div>
   </section>
 
   <section class="sec" id="video">
