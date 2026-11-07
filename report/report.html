@@ -159,7 +159,7 @@ code { font: 500 7.4pt var(--mono); }
 <div class="grid3" style="margin-top:8pt">
  <div class="card"><h3>What works <span class="tag ok">Works well</span></h3>The pipeline end to end: pinned inputs, strip, separate verifier, oracle at 1.00, and a gold-copy check that flags any run reproducing the human copper.</div>
  <div class="card"><h3>What the floor shows <span class="tag grow">Refine</span></h3>On the PCIe adapter the router made 96% of connections but only 1 of 9 pairs met the skew tolerance and 43% of high-speed copper used an impedance-correct width.</div>
- <div class="card"><h3>Next runs <span class="tag next">Coming soon</span></h3>Agent runs through Harbor (Claude Code, Codex, OpenHands), KiCadRoutingTools with length matching, and the hard DDR tier with a full-wave check on sampled nets.</div>
+ <div class="card"><h3>Next runs <span class="tag next">Coming soon</span></h3>Agent runs through Harbor (Claude Code, Codex, OpenHands), KiCadRoutingTools with length matching, the Jetson Orin baseline on native hardware (it exceeded 90 min under emulation) and the hard DDR tier.</div>
 </div>
 <div class="note" style="margin-top:8pt"><b>Integrity.</b> Agents have network access, so a run could download the gold board. The verifier reports <code>gold_copy_fraction</code>, the share of segments that coincide with the human copper on a 10 µm grid; leaderboards disqualify runs above 0.5. Public boards may also sit in model training data, a contamination risk shared by every open benchmark.</div></div></section><section class="page">
 <div class="topline"><span>04 · The forecast</span><span>Field Report · PCB Gold-Master Eval</span></div>

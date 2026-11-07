@@ -210,7 +210,7 @@ page("03 · The eval", f'''
 <div class="grid3" style="margin-top:8pt">
  <div class="card"><h3>What works {tag("ok")}</h3>The pipeline end to end: pinned inputs, strip, separate verifier, oracle at 1.00, and a gold-copy check that flags any run reproducing the human copper.</div>
  <div class="card"><h3>What the floor shows {tag("grow")}</h3>On the PCIe adapter the router made {m2.get("completion", 0)*100:.0f}% of connections but only {m2.get("pair_skew", 0)*9:.0f} of 9 pairs met the skew tolerance and {m2.get("impedance_width", 0)*100:.0f}% of high-speed copper used an impedance-correct width.</div>
- <div class="card"><h3>Next runs {tag("next")}</h3>Agent runs through Harbor (Claude Code, Codex, OpenHands), KiCadRoutingTools with length matching, and the hard DDR tier with a full-wave check on sampled nets.</div>
+ <div class="card"><h3>Next runs {tag("next")}</h3>Agent runs through Harbor (Claude Code, Codex, OpenHands), KiCadRoutingTools with length matching, the Jetson Orin baseline on native hardware (it exceeded 90 min under emulation) and the hard DDR tier.</div>
 </div>
 <div class="note" style="margin-top:8pt"><b>Integrity.</b> Agents have network access, so a run could download the gold board. The verifier reports <code>gold_copy_fraction</code>, the share of segments that coincide with the human copper on a 10 µm grid; leaderboards disqualify runs above 0.5. Public boards may also sit in model training data, a contamination risk shared by every open benchmark.</div>''')
 

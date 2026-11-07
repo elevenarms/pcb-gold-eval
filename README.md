@@ -66,7 +66,7 @@ uvx --from harbor==0.25.0 harbor run -p tasks/route-m2-pcie-adapter -a claude-co
 
 ## Results so far
 
-The oracle (gold copper) scores 1.00 on 8 of 8 tasks through Harbor. Freerouting 2.5 with no agent completes 72–96% of connections on boards without dense BGAs, stalls at 18% on the BGA-heavy HDMI bridge, and misses the high-frequency terms everywhere. On the M.2 PCIe adapter it routed 92% of connections, met the skew tolerance on 1 of 9 pairs, and reached a reward of 0.21–0.27 across runs. Full tables are in [`data/baselines/`](data/baselines), the report and the paper.
+The oracle (gold copper) scores 1.00 on 8 of 8 tasks through Harbor. Freerouting 2.5 with no agent completes 72–96% of connections on boards without dense BGAs, stalls at 18% on the BGA-heavy HDMI bridge, and misses the high-frequency terms everywhere. On the M.2 PCIe adapter it routed 92% of connections, met the skew tolerance on 1 of 9 pairs, and reached a reward of 0.21–0.27 across runs. On the eight-layer Jetson Orin baseboard, Freerouting did not finish within 90 minutes under x86 emulation; that board and the hard DDR tier still need native-hardware baselines. Full tables are in [`data/baselines/`](data/baselines), the report and the paper.
 
 ## Forecast
 
